@@ -1,0 +1,3604 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>学中文 · Học tiếng Trung</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#faf7f2;--card:#fff;--ink:#1f1b16;--mute:#7a7167;--line:#e8e0d4;--red:#c8372d;--redbg:#fbe9e7;--ok:#2e7d4f;--okbg:#e5f4ea;--bad:#b3261e;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17140f;--card:#221e18;--ink:#f2ebe0;--mute:#a39a8c;--line:#383227;--red:#ef6a5e;--redbg:#3a1f1c;--ok:#6fcf97;--okbg:#17301f;--bad:#ff8a80;color-scheme:dark}}
+*{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);overflow-x:hidden;width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));overflow-x:hidden;width:100%;max-width:100vw}
+header{padding:16px 16px 4px;max-width:760px;margin:0 auto;display:flex;align-items:baseline;justify-content:space-between}
+header h1{margin:0;font-size:20px}header span{color:var(--mute);font-size:13px}
+main{max-width:760px;margin:0 auto;padding:8px 16px 24px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;max-width:150px;background:none;border:0;color:var(--mute);padding:10px 2px 8px;font:inherit;font-size:12px;cursor:pointer}
+nav button i{display:block;font-style:normal;font-size:20px}
+nav button.on{color:var(--red);font-weight:600}
+@media (min-width:760px){nav{position:sticky;top:0;bottom:auto;border:0;border-bottom:1px solid var(--line)}body{padding-bottom:24px}nav button{max-width:none;font-size:14px}nav button i{display:inline;margin-right:6px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}
+.sticky-hero{
+ position:sticky;
+ top:8px;
+ z-index:4;
+ background:var(--card);
+ border:1.5px solid var(--line);
+ border-radius:16px;
+ box-shadow:0 6px 20px rgba(0,0,0,.08);
+ padding:14px 18px;
+ margin:6px 0 14px;
+}
+@media (min-width:760px){
+ .sticky-hero{top:54px}
+}
+@media (max-width:520px){
+ .sticky-hero{top:4px;padding:10px 12px;margin:4px 0 10px}
+ .sticky-hero .ch b{font-size:42px}
+ .sticky-hero .mean{font-size:17px;margin:3px 0}
+ .sticky-hero .py{font-size:15px}
+ .sticky-hero .row{margin-top:6px}
+}
+.center{text-align:center}
+.hz{display:inline-flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.ch{background:none;border:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;padding:4px 6px;border-radius:10px;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+.ch:hover{background:var(--redbg)}.ch small{font-size:15px;color:var(--red)}.ch b{font-size:56px;font-weight:500;line-height:1.15}
+.sm .ch b{font-size:30px}.sm .ch small{font-size:12px}
+.mean{font-size:20px;margin:6px 0}.py{color:var(--red);font-size:18px}
+.btn{background:var(--red);color:#fff;border:0;border-radius:12px;padding:10px 16px;font:inherit;cursor:pointer;font-weight:600}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.4}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.w{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:left;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;justify-content:flex-start;gap:3px}
+.w.on{border-color:var(--red);background:var(--redbg)}
+.w-badge-row{display:flex;justify-content:flex-start;align-items:center;margin-bottom:2px}
+.w-badge{font-size:11px;padding:2px 7px;border-radius:5px;white-space:nowrap;font-weight:600;display:inline-block}
+.w b{font-size:22px;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.2;color:var(--ink);display:block;margin:1px 0}
+.w .w-py{font-size:13px;color:var(--red);font-weight:500;line-height:1.25}
+.w .w-mean{font-size:12px;color:var(--mute);line-height:1.35}
+.chip{
+ display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+ background:var(--card);border:1.5px solid var(--line);border-radius:12px;
+ padding:6px 12px;margin:4px;font:inherit;cursor:pointer;color:var(--ink);
+ transition:all .15s ease;vertical-align:middle;
+}
+.chip:hover{border-color:var(--red);transform:translateY(-1px)}
+.chip .chip-py{font-size:11px;color:var(--red);line-height:1.2;font-weight:500;margin-bottom:2px}
+.chip b{font-size:20px;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.2;font-weight:600}
+.slot{min-height:58px;border:2px dashed var(--line);border-radius:12px;padding:6px;margin:10px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center}
+
+.sent-sticky-hero{
+ position:sticky;top:8px;z-index:15;
+ box-shadow:0 8px 24px rgba(0,0,0,.08);background:var(--card);
+}
+@media (min-width:760px){.sent-sticky-hero{top:54px}}
+@media (max-width:520px){.sent-sticky-hero{top:4px;padding:12px;margin:4px 0 8px}}
+
+.sent-card{
+ margin:6px 0;padding:12px 14px;cursor:pointer;transition:all .18s ease;
+ border:1.5px solid var(--line);border-radius:14px;background:var(--card);
+}
+.sent-card:hover{
+ border-color:var(--red);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+.sent-card.active{border-color:var(--red);background:var(--redbg)}
+.tag-status{
+ display:inline-block;background:var(--red);color:#fff;
+ font-size:11px;padding:2px 7px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle;
+}
+
+.ai-context-bar{
+ font-size:11px;color:var(--mute);background:var(--line);padding:4px 12px;
+ border-bottom:1px solid var(--line);display:flex;align-items:center;gap:4px;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ai-context-bar b{color:var(--ink)}
+
+.ai-cat-bar{
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ background:var(--card);padding:6px 10px;border-radius:8px;margin-bottom:8px;
+ font-size:12px;border:1px solid var(--line);
+}
+.ai-cat-select{
+ width:auto;flex:1;max-width:200px;padding:3px 8px;font-size:12px;border-radius:6px;margin:0;height:auto;
+}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0;font:inherit;font-size:18px;color:var(--ink);cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--bad)}
+input,textarea,select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+.bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--red)}
+.fb{padding:10px 12px;border-radius:12px;margin-top:10px}.fb.ok{background:var(--okbg);color:var(--ok)}.fb.bad{background:var(--redbg);color:var(--bad)}
+h2{font-size:18px;margin:16px 0 6px}.mute{color:var(--mute);font-size:14px}
+.big{font-size:44px;font-weight:700;color:var(--red)}
+.pat{font-size:20px;font-weight:600;color:var(--red)}
+.del{background:none;border:0;color:var(--mute);cursor:pointer;font-size:18px}
+.li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:20px;font-size:14px;display:none;z-index:9}
+
+/* Category pills and tags */
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 13px;font:inherit;font-size:13px;cursor:pointer;color:var(--mute);transition:all .15s}
+.pill:hover{border-color:var(--red);color:var(--ink)}
+.pill.on{background:var(--red);color:#fff;border-color:var(--red);font-weight:600}
+.pill.sm{padding:4px 10px;font-size:12px;border-radius:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;line-height:1.4}
+.tag-comm{background:#e8f0fe;color:#1967d2}
+.tag-live{background:#fce8e6;color:#c5221f}
+.tag-custom{background:#e6f4ea;color:#137333}
+.tag-sub{display:inline-block;background:var(--line);color:var(--mute);font-size:11px;padding:2px 8px;border-radius:6px;margin-left:4px}
+@media (prefers-color-scheme:dark){
+ :root:not([data-theme="light"]) .tag-comm{background:#182b49;color:#8ab4f8}
+ :root:not([data-theme="light"]) .tag-live{background:#3a1f1c;color:#f28b82}
+ :root:not([data-theme="light"]) .tag-custom{background:#173623;color:#81c995}
+ :root:not([data-theme="light"]) .tag-sub{background:#2a251e;color:#b3a898}
+}
+.w-badge-row{display:flex;justify-content:flex-start;align-items:center;margin-bottom:4px}
+.w-badge{font-size:10px;padding:1px 6px;border-radius:4px;white-space:nowrap;font-weight:500}
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;margin:16px 0 8px}
+.sec-hd h2{margin:0}
+
+/* Filter dropdown bar (as in Image 1) */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 6px}
+.filter-btn{
+ display:inline-flex;align-items:center;gap:6px;
+ background:var(--card);border:1px solid var(--line);border-radius:12px;
+ padding:8px 14px;font:inherit;font-size:14px;font-weight:500;color:var(--ink);
+ cursor:pointer;transition:all .15s ease;white-space:nowrap;
+}
+.filter-btn:hover{border-color:var(--red);color:var(--red)}
+.filter-btn.active{border-color:var(--red);background:var(--redbg);color:var(--red);font-weight:600}
+.filter-btn .caret{font-size:10px;transition:transform .2s ease;color:var(--mute);margin-left:2px}
+.filter-btn.active .caret{color:var(--red)}
+.filter-btn.open .caret{transform:rotate(180deg)}
+
+.filter-drawer{
+ background:var(--card);border:1.5px solid var(--line);border-radius:14px;
+ padding:14px 16px;margin:8px 0 14px;box-shadow:0 6px 20px rgba(0,0,0,.06);
+ animation:drawerFade .18s ease-out;
+}
+@keyframes drawerFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.drawer-title{
+ font-size:15px;font-weight:700;margin-bottom:12px;color:var(--ink);
+ display:flex;justify-content:space-between;align-items:center;
+}
+.drawer-title span{font-size:12px;font-weight:normal;color:var(--mute)}
+.drawer-grid{display:flex;flex-wrap:wrap;gap:8px}
+.drawer-chip{
+ background:var(--card);border:1px solid var(--line);border-radius:10px;
+ padding:8px 14px;font:inherit;font-size:13px;font-weight:500;color:var(--ink);
+ cursor:pointer;transition:all .15s ease;
+}
+.drawer-chip:hover{border-color:var(--red);color:var(--red)}
+.drawer-chip.active{border-color:var(--red);background:var(--red);color:#fff;font-weight:600}
+
+/* AI Chatbot FAB and Panel */
+#aiFab{
+ position:fixed;
+ right:16px;
+ bottom:calc(76px + env(safe-area-inset-bottom,0px));
+ width:52px;
+ height:52px;
+ border-radius:50%;
+ background:linear-gradient(135deg,#c8372d 0%,#e65100 100%);
+ color:#fff;
+ border:0;
+ cursor:pointer;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:24px;
+ box-shadow:0 4px 16px rgba(200,55,45,.45);
+ z-index:20;
+ transition:transform .2s,box-shadow .2s;
+}
+#aiFab:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(200,55,45,.55)}
+#aiFab:active{transform:scale(.95)}
+@media (min-width:760px){
+ #aiFab{bottom:24px;right:24px}
+}
+
+#aiPanel{
+ position:fixed;
+ right:20px;
+ bottom:84px;
+ width:440px;
+ max-width:calc(100vw - 32px);
+ height:600px;
+ max-height:calc(100vh - 110px);
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:20px;
+ box-shadow:0 12px 36px rgba(0,0,0,.22);
+ display:none;
+ flex-direction:column;
+ z-index:25;
+ overflow:hidden;
+ box-sizing:border-box;
+ animation:aiPopIn .2s ease-out;
+}
+@keyframes aiPopIn{
+ from{opacity:0;transform:scale(.95) translateY(10px)}
+ to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+/* Mobile full-balance alignment for Chatbot */
+@media (max-width:600px){
+ #aiPanel{
+  left:8px;
+  right:8px;
+  top:calc(10px + env(safe-area-inset-top,0px));
+  bottom:calc(68px + env(safe-area-inset-bottom,0px));
+  width:auto;
+  max-width:calc(100vw - 16px);
+  height:auto;
+  max-height:none;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.28);
+ }
+}
+
+.ai-header{
+ padding:10px 14px;
+ border-bottom:1px solid var(--line);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ background:var(--card);
+ flex-shrink:0;
+ box-sizing:border-box;
+ width:100%;
+}
+.ai-title{
+ display:flex;
+ align-items:center;
+ gap:6px;
+ min-width:0;
+ flex:1;
+ overflow:hidden;
+}
+.ai-title b{
+ font-size:14px;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+.ai-actions{
+ display:flex;
+ gap:3px;
+ align-items:center;
+ flex-shrink:0;
+}
+.ai-icon-btn{
+ background:none;
+ border:0;
+ color:var(--mute);
+ cursor:pointer;
+ font-size:15px;
+ width:32px;
+ height:32px;
+ padding:0;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:8px;
+ transition:all .15s;
+}
+.ai-icon-btn:hover{background:var(--bg);color:var(--ink)}
+
+#aiSettings{
+ background:var(--bg);
+ border-bottom:1px solid var(--line);
+ padding:10px 12px;
+ flex-shrink:0;
+ max-height:55vh;
+ overflow-y:auto;
+ box-sizing:border-box;
+ width:100%;
+}
+.ai-settings-card{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:12px;
+ box-sizing:border-box;
+ width:100%;
+}
+
+#aiMessages{
+ flex:1;
+ overflow-y:auto;
+ overflow-x:hidden;
+ padding:12px;
+ display:flex;
+ flex-direction:column;
+ gap:10px;
+ scroll-behavior:smooth;
+ min-width:0;
+ width:100%;
+ box-sizing:border-box;
+}
+
+.ai-msg{
+ display:flex;
+ flex-direction:column;
+ gap:4px;
+ min-width:0;
+ box-sizing:border-box;
+}
+.ai-msg.user{
+ align-self:flex-end;
+ align-items:flex-end;
+ max-width:85%;
+}
+.ai-msg.bot{
+ align-self:flex-start;
+ align-items:flex-start;
+ width:100%;
+ max-width:100%;
+}
+
+.ai-bubble{
+ padding:10px 12px;
+ border-radius:16px;
+ font-size:14px;
+ line-height:1.45;
+ word-break:break-word;
+ overflow-wrap:break-word;
+ max-width:100%;
+ box-sizing:border-box;
+}
+.ai-msg.user .ai-bubble{
+ background:var(--red);
+ color:#fff;
+ border-bottom-right-radius:4px;
+}
+.ai-msg.bot .ai-bubble{
+ background:var(--bg);
+ border:1px solid var(--line);
+ color:var(--ink);
+ border-bottom-left-radius:4px;
+ width:100%;
+}
+
+.ai-cursor{
+ display:inline-block;
+ color:var(--red);
+ font-weight:700;
+ margin-left:3px;
+ animation:aiBlink 0.7s infinite;
+}
+@keyframes aiBlink{
+ 0%,100%{opacity:1}
+ 50%{opacity:0}
+}
+
+/* Quick pills & input box styles */
+.dd-controls-row{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:12px;
+ padding-top:10px;
+ border-top:1px dashed var(--line);
+ position:relative;
+ width:100%;
+ box-sizing:border-box;
+}
+.dd-wrap{
+ position:relative;
+ display:inline-block;
+}
+.dd-btn{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ background:var(--bg);
+ border:1.5px solid var(--line);
+ border-radius:12px;
+ padding:7px 14px;
+ font-size:13px;
+ font-weight:600;
+ color:var(--ink);
+ cursor:pointer;
+ transition:all .15s ease;
+ user-select:none;
+}
+.dd-btn:hover{
+ background:var(--card);
+ border-color:var(--mute);
+ box-shadow:0 2px 6px rgba(0,0,0,0.06);
+}
+.dd-btn.open{
+ border-color:var(--red);
+ color:var(--red);
+ background:var(--card);
+}
+.dd-arrow{
+ font-size:10px;
+ color:var(--mute);
+ transition:transform .2s ease;
+ margin-left:2px;
+}
+.dd-menu{
+ position:absolute;
+ top:calc(100% + 6px);
+ left:50%;
+ transform:translateX(-50%);
+ background:var(--card);
+ border:1.5px solid var(--line);
+ border-radius:14px;
+ box-shadow:0 12px 30px rgba(0,0,0,0.16), 0 3px 8px rgba(0,0,0,0.06);
+ width:290px;
+ max-width:calc(100vw - 28px);
+ z-index:9999;
+ text-align:left;
+ overflow:hidden;
+ box-sizing:border-box;
+ animation:ddFadeIn .15s ease-out;
+}
+@keyframes ddFadeIn{
+ from{opacity:0;transform:translate(-50%, -6px)}
+ to{opacity:1;transform:translate(-50%, 0)}
+}
+.dd-menu.left-align{
+ left:0;
+ transform:none;
+ animation:ddFadeInLeft .15s ease-out;
+}
+@keyframes ddFadeInLeft{
+ from{opacity:0;transform:translateY(-6px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media (max-width:520px){
+ .dd-controls-row{gap:6px;margin-top:8px;padding-top:8px}
+ .dd-btn{padding:6px 10px;font-size:12px;gap:5px}
+ .dd-menu{width:min(290px, calc(100vw - 28px))}
+ .dd-wrap:first-child .dd-menu{left:0;transform:none}
+ .dd-wrap:last-child .dd-menu{left:auto;right:0;transform:none}
+}
+.dd-header{
+ padding:8px 14px;
+ font-size:11px;
+ font-weight:700;
+ text-transform:uppercase;
+ letter-spacing:0.5px;
+ color:var(--mute);
+ background:var(--bg);
+ border-bottom:1px solid var(--line);
+}
+.dd-item{
+ display:flex;
+ align-items:flex-start;
+ padding:10px 14px;
+ cursor:pointer;
+ transition:background .12s ease;
+ border-bottom:1px solid var(--line);
+}
+.dd-item:last-child{
+ border-bottom:none;
+}
+.dd-item:hover{
+ background:var(--bg);
+}
+.dd-item.selected{
+ background:rgba(192,57,43,0.05);
+}
+.dd-check{
+ width:22px;
+ font-size:14px;
+ font-weight:bold;
+ color:var(--red);
+ flex-shrink:0;
+ margin-top:1px;
+}
+.dd-content{
+ flex:1;
+ min-width:0;
+}
+.dd-title{
+ font-size:13px;
+ font-weight:600;
+ color:var(--ink);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+.dd-tag{
+ font-size:10px;
+ font-weight:500;
+ color:var(--mute);
+ background:var(--bg);
+ padding:1px 6px;
+ border-radius:6px;
+ border:1px solid var(--line);
+}
+.dd-desc{
+ font-size:11px;
+ color:var(--mute);
+ margin-top:2px;
+ line-height:1.35;
+}
+
+.ai-quick-pills{
+ display:flex;
+ gap:6px;
+ overflow-x:auto;
+ padding:8px 12px;
+ border-top:1px solid var(--line);
+ background:var(--bg);
+ white-space:nowrap;
+ flex-shrink:0;
+ min-width:0;
+ width:100%;
+ box-sizing:border-box;
+ -webkit-overflow-scrolling:touch;
+}
+.ai-quick-pills::-webkit-scrollbar{
+ height:3px;
+}
+.ai-quick-pills::-webkit-scrollbar-thumb{
+ background:var(--line);
+ border-radius:3px;
+}
+.ai-quick-btn{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:14px;
+ padding:4px 10px;
+ font-size:12px;
+ color:var(--mute);
+ cursor:pointer;
+ flex-shrink:0;
+ transition:all .15s;
+}
+.ai-quick-btn:hover{border-color:var(--red);color:var(--red)}
+
+.ai-input-box{
+ display:flex;
+ gap:8px;
+ padding:10px 12px;
+ background:var(--card);
+ border-top:1px solid var(--line);
+ align-items:flex-end;
+ flex-shrink:0;
+ min-width:0;
+ width:100%;
+ box-sizing:border-box;
+}
+.ai-input-box textarea{
+ flex:1;
+ min-width:0;
+ resize:none;
+ min-height:38px;
+ max-height:85px;
+ padding:8px 12px;
+ font-size:14px;
+ border-radius:14px;
+ box-sizing:border-box;
+}
+.ai-send-btn{
+ background:var(--red);
+ color:#fff;
+ border:0;
+ border-radius:12px;
+ width:38px;
+ height:38px;
+ cursor:pointer;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:16px;
+ flex-shrink:0;
+ transition:all .15s;
+}
+.ai-send-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Vocab card inside AI message */
+.ai-vocab-box{
+ margin-top:8px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+ width:100%;
+ min-width:0;
+ box-sizing:border-box;
+}
+.ai-vcard{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:10px 12px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+ width:100%;
+ min-width:0;
+ box-sizing:border-box;
+}
+.ai-vcard-info{
+ width:100%;
+ min-width:0;
+}
+.ai-vcard-top{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ margin-bottom:2px;
+}
+.ai-vcard-top b{
+ font-size:18px;
+ font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+ color:var(--ink);
+}
+.ai-vcard-py{
+ color:var(--red);
+ font-size:12px;
+ font-weight:500;
+ margin-bottom:1px;
+}
+.ai-vcard-m{
+ color:var(--mute);
+ font-size:12px;
+ line-height:1.3;
+}
+.ai-vcard-actions{
+ display:flex;
+ align-items:center;
+ gap:6px;
+ flex-wrap:wrap;
+ width:100%;
+ padding-top:6px;
+ border-top:1px dashed var(--line);
+ box-sizing:border-box;
+}
+.ai-vcard-actions .btn{
+ flex:1;
+ min-width:80px;
+ text-align:center;
+ justify-content:center;
+ padding:5px 8px;
+ font-size:12px;
+ border-radius:8px;
+}
+.ai-vcard-actions .btn.ghost:first-child{
+ flex:0 0 auto;
+ min-width:34px;
+ padding:5px 8px;
+}
+.ai-added-tag{
+ font-size:11px;
+ color:var(--ok);
+ font-weight:600;
+ padding:4px 8px;
+ background:var(--okbg);
+ border-radius:8px;
+ display:inline-block;
+}
+
+/* Sentence cards inside AI message */
+.ai-sent-box{
+ margin-top:8px;
+ display:flex;
+ flex-direction:column;
+ gap:8px;
+ width:100%;
+ min-width:0;
+ box-sizing:border-box;
+}
+.ai-scard{
+ background:var(--card);
+ border:1.5px solid var(--line);
+ border-radius:12px;
+ padding:10px 12px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+ width:100%;
+ min-width:0;
+ box-sizing:border-box;
+ transition:border-color .15s ease;
+}
+.ai-scard:hover{border-color:var(--red)}
+.ai-scard-top{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:8px;
+}
+.ai-scard-hz{
+ font-size:17px;
+ font-weight:600;
+ font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+ color:var(--ink);
+ line-height:1.3;
+ word-break:break-word;
+}
+.ai-scard-tokens{
+ display:flex;
+ flex-wrap:wrap;
+ gap:4px;
+ margin:2px 0;
+}
+.ai-tok-pill{
+ font-size:11px;
+ background:var(--redbg);
+ color:var(--red);
+ border-radius:6px;
+ padding:2px 7px;
+ font-weight:500;
+ border:1px solid rgba(239,106,94,.2);
+}
+.ai-scard-py{
+ color:var(--red);
+ font-size:12px;
+ font-weight:500;
+ word-break:break-word;
+}
+.ai-scard-vi{
+ color:var(--ink);
+ font-size:13px;
+ word-break:break-word;
+ line-height:1.35;
+}
+.ai-scard-foot{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:6px;
+ margin-top:4px;
+ padding-top:6px;
+ border-top:1px dashed var(--line);
+ width:100%;
+ box-sizing:border-box;
+}
+.ai-scard-foot .ai-scard-btns{
+ display:flex;
+ gap:6px;
+ align-items:center;
+ flex:1;
+ min-width:160px;
+ justify-content:flex-end;
+ flex-wrap:wrap;
+}
+.ai-scard-foot .ai-scard-btns .btn{
+ flex:1;
+ min-width:80px;
+ text-align:center;
+ justify-content:center;
+ padding:5px 8px;
+ font-size:12px;
+ border-radius:8px;
+}
+
+.ai-cat-bar{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:6px;
+ background:var(--card);
+ padding:6px 10px;
+ border-radius:8px;
+ margin-bottom:8px;
+ font-size:12px;
+ border:1px solid var(--line);
+ width:100%;
+ box-sizing:border-box;
+}
+.ai-cat-select{
+ width:auto;
+ flex:1;
+ min-width:120px;
+ max-width:100%;
+ padding:4px 8px;
+ font-size:12px;
+ border-radius:6px;
+ margin:0;
+ height:auto;
+}
+
+/* Lock screen & animation */
+@keyframes aiShake{
+ 0%,100%{transform:translateX(0)}
+ 20%,60%{transform:translateX(-6px)}
+ 40%,80%{transform:translateX(6px)}
+}
+.shake-anim{animation:aiShake .35s ease;border-color:var(--bad)!important}
+#aiFabLock{
+ position:absolute;top:-3px;right:-3px;font-size:11px;
+ background:var(--card);border:1px solid var(--line);border-radius:50%;
+ width:18px;height:18px;line-height:16px;text-align:center;
+ box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+#aiLockScreen{
+ padding:24px 16px;text-align:center;display:flex;
+ flex-direction:column;align-items:center;justify-content:center;
+ min-height:320px;box-sizing:border-box;width:100%;
+}</style>
+</head>
+<body>
+<header><h1>学中文 · Học tiếng Trung</h1><span id="stat"></span></header>
+<nav id="nav"></nav>
+<main id="app"></main>
+<div id="toast"></div>
+
+<!-- Chatbot Floating Action Button & Window -->
+<button id="aiFab" onclick="toggleAi()" title="Trợ lý AI Tiếng Trung (Hỏi đáp & Thêm từ)">
+ 🤖<span id="aiFabLock" style="display:none">🔒</span>
+</button>
+
+<div id="aiPanel">
+ <div class="ai-header">
+  <div class="ai-title">
+   <b>🤖 Trợ lý AI Tiếng Trung</b>
+   <span id="aiModelBadge" class="tag tag-comm">Gemini</span>
+  </div>
+  <div class="ai-actions">
+   <button class="ai-icon-btn" id="aiLockBtn" onclick="lockAi()" title="Khóa Trợ lý AI" style="display:none">🔒</button>
+   <button class="ai-icon-btn" id="aiSettingsBtn" onclick="toggleAiSettings()" title="Cài đặt API">⚙️</button>
+   <button class="ai-icon-btn" id="aiClearBtn" onclick="clearAiChat()" title="Xóa lịch sử chat">🗑️</button>
+   <button class="ai-icon-btn" onclick="toggleAi()" title="Đóng">✕</button>
+  </div>
+ </div>
+
+ <div id="aiContextBar" class="ai-context-bar">📍 Đang ở: Học từ vựng</div>
+
+ <div id="aiLockScreen" style="display:none">
+  <div style="font-size:46px;margin-bottom:12px;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.12))">🔒</div>
+  <div style="font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px">Trợ lý AI đang được khóa</div>
+  <div style="font-size:13px;color:var(--mute);margin-bottom:18px;max-width:280px;line-height:1.4">
+   Vui lòng nhập mật khẩu để mở khóa và trò chuyện cùng Trợ lý AI.
+  </div>
+  <div style="width:100%;max-width:280px;position:relative;margin:0 auto 8px">
+   <input type="password" id="aiPassInput" placeholder="Nhập mật khẩu mở khóa..." 
+          style="width:100%;padding:10px 38px 10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:14px;box-sizing:border-box"
+          onkeydown="if(event.key==='Enter') unlockAi()">
+   <button type="button" onclick="togglePassVisibility('aiPassInput', this)" 
+           style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;color:var(--mute);padding:4px" 
+           title="Hiện/Ẩn mật khẩu">👁️</button>
+  </div>
+  <div id="aiPassError" style="display:none;color:var(--bad);font-size:12px;font-weight:500;margin-bottom:10px;text-align:center"></div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:16px;font-size:12px;color:var(--mute)">
+   <input type="checkbox" id="aiRememberUnlock" style="width:auto;margin:0;cursor:pointer">
+   <label for="aiRememberUnlock" style="cursor:pointer">Ghi nhớ mở khóa trên trình duyệt</label>
+  </div>
+  <button class="btn" onclick="unlockAi()" style="width:100%;max-width:280px;padding:10px;font-weight:600;font-size:14px;border-radius:12px">
+   🔓 Mở khóa Trợ lý AI
+  </button>
+ </div>
+
+ <div id="aiSettings" style="display:none">
+  <div class="ai-settings-card">
+   <div style="font-size:13px;font-weight:600;margin-bottom:6px">⚙️ Cài đặt kết nối AI</div>
+   <div style="font-size:12px;color:var(--mute);margin-bottom:6px">Chọn nhà cung cấp AI:</div>
+   <select id="aiProviderSelect" onchange="onAiProviderChange()" style="margin-bottom:8px">
+    <option value="gemini">Google Gemini (Miễn phí & Rất nhanh)</option>
+    <option value="openai">OpenAI ChatGPT (gpt-4o-mini)</option>
+   </select>
+
+   <div id="aiGeminiModelWrap" style="margin-bottom:8px">
+    <div style="font-size:12px;color:var(--mute);margin-bottom:4px">Mô hình Gemini:</div>
+    <select id="aiGeminiModelSelect" style="margin-bottom:0">
+     <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite (Khuyên dùng: Siêu nhanh, phản hồi tức thì)</option>
+     <option value="gemini-3.8-flash">gemini-3.8-flash (Mô hình mới nhất, tư duy cao)</option>
+     <option value="gemini-4-carbon">gemini-4-carbon (Google Frontier 4)</option>
+    </select>
+    <div style="font-size:11px;color:var(--mute);margin-top:3px">💡 Tự động tìm mô hình khả dụng và chuyển dự phòng nếu quá tải.</div>
+   </div>
+   <div id="aiKeyStatus" style="margin-bottom:8px"></div>
+   <input type="password" id="aiApiKeyInput" placeholder="Dán API Key vào đây..." style="margin-bottom:4px" autocomplete="off">
+   <div id="aiKeyHelp" class="mute" style="font-size:11px;margin-bottom:10px">
+    Lấy key miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color:var(--red)">Google AI Studio</a>
+   </div>
+   <div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);margin-bottom:10px">
+    <div style="font-size:12px;font-weight:600;margin-bottom:4px;color:var(--ink)">🔑 Mật khẩu mở khóa Chatbot:</div>
+    <div style="font-size:11px;color:var(--mute);margin-bottom:6px">Nhập mật khẩu mới nếu muốn thay đổi (để trống nếu giữ nguyên):</div>
+    <div style="position:relative">
+     <input type="password" id="aiCustomPassInput" placeholder="Nhập mật khẩu mới..." style="padding-right:36px;margin-bottom:0" autocomplete="off">
+     <button type="button" onclick="togglePassVisibility('aiCustomPassInput', this)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;color:var(--mute);padding:4px" title="Hiện/Ẩn">👁️</button>
+    </div>
+   </div>
+   <div class="row" style="margin-top:0;justify-content:flex-end">
+    <button class="btn" style="padding:6px 14px;font-size:13px" onclick="saveAiSettings()">Lưu cài đặt</button>
+   </div>
+  </div>
+ </div>
+
+ <div id="aiMessages"></div>
+
+ <div class="ai-quick-pills" id="aiQuickPills">
+  <button class="ai-quick-btn" onclick="askQuickAi('Cho tôi 5 từ vựng tiếng Trung chủ đề Hoa quả kèm pinyin và nghĩa tiếng Việt')">🍎 5 từ vựng hoa quả</button>
+  <button class="ai-quick-btn" onclick="askQuickAi('Gợi ý 5 từ vựng chốt đơn cực hot trong live Douyin/TikTok')">💡 5 từ chốt đơn hot trong live</button>
+  <button class="ai-quick-btn" onclick="askQuickAi('Gợi ý 5 từ vựng chuyên ngành về thiết bị và kỹ thuật phòng live')">💡 5 từ thiết bị phòng live</button>
+  <button class="ai-quick-btn" onclick="askQuickAi('Cho tôi 3 câu chốt đơn kích thích khách bấm mua hàng ngay')">💡 3 mẫu câu giục mua hàng</button>
+  <button class="ai-quick-btn" onclick="askQuickAi('Giải thích cách dùng câu chữ 把 trong tiếng Trung')">💡 Cách dùng câu chữ 把</button>
+ </div>
+
+ <div class="ai-input-box">
+  <textarea id="aiInput" rows="1" placeholder="Hỏi từ vựng, ngữ pháp, mẫu câu live..." onkeydown="handleAiKey(event)"></textarea>
+  <button class="ai-send-btn" id="aiSendBtn" onclick="sendAiMsg()" title="Gửi">➤</button>
+ </div>
+</div>
+<script>
+// Master Vocabulary: 18 Từ giao tiếp + 135 Từ livestream = 153 từ chuẩn xác
+var MASTER_COMM = [
+ ["你好","nǐ hǎo","xin chào","Chào hỏi"],
+ ["谢谢","xiè xie","cảm ơn","Chào hỏi"],
+ ["再见","zài jiàn","tạm biệt","Chào hỏi"],
+ ["我","wǒ","tôi","Đại từ"],
+ ["你","nǐ","bạn","Đại từ"],
+ ["是","shì","là","Cơ bản"],
+ ["不","bù","không","Cơ bản"],
+ ["学生","xué sheng","học sinh","Quan hệ & Xưng hô"],
+ ["老师","lǎo shī","giáo viên","Quan hệ & Xưng hô"],
+ ["朋友","péng you","bạn bè","Quan hệ & Xưng hô"],
+ ["吃","chī","ăn","Sinh hoạt & Đời sống"],
+ ["喝","hē","uống","Sinh hoạt & Đời sống"],
+ ["水","shuǐ","nước","Sinh hoạt & Đời sống"],
+ ["饭","fàn","cơm","Sinh hoạt & Đời sống"],
+ ["喜欢","xǐ huan","thích","Cảm xúc & Ý muốn"],
+ ["中国","Zhōng guó","Trung Quốc","Từ vựng chung"],
+ ["好","hǎo","tốt","Tính từ"],
+ ["什么","shén me","cái gì","Từ để hỏi"]
+];
+
+var MASTER_LIVE = [
+ // 1. Nhân sự & Vai trò (13 từ)
+ ["主播","zhǔ bō","host / người livestream","Nhân sự & Vai trò"],
+ ["助播","zhù bō","trợ lý host","Nhân sự & Vai trò"],
+ ["场控","chǎng kòng","điều phối phòng live","Nhân sự & Vai trò"],
+ ["中控","zhōng kòng","điều phối sản phẩm, giá, ưu đãi","Nhân sự & Vai trò"],
+ ["运营","yùn yíng","nhân sự vận hành","Nhân sự & Vai trò"],
+ ["直播运营","zhí bō yùn yíng","vận hành livestream","Nhân sự & Vai trò"],
+ ["导播","dǎo bō","đạo diễn hình / chuyển cảnh","Nhân sự & Vai trò"],
+ ["摄像师","shè xiàng shī","quay phim","Nhân sự & Vai trò"],
+ ["场务","chǎng wù","hậu cần trường quay","Nhân sự & Vai trò"],
+ ["直播团队","zhí bō tuán duì","đội ngũ livestream","Nhân sự & Vai trò"],
+ ["达人","dá rén","nhà sáng tạo / influencer","Nhân sự & Vai trò"],
+ ["网红","wǎng hóng","người nổi tiếng trên mạng","Nhân sự & Vai trò"],
+ ["负责人","fù zé rén","người phụ trách","Nhân sự & Vai trò"],
+
+ // 2. Thiết bị & Phòng live (27 từ)
+ ["直播间","zhí bō jiān","phòng livestream","Thiết bị & Phòng live"],
+ ["前台","qián tái","khu vực trước máy quay","Thiết bị & Phòng live"],
+ ["后台","hòu tái","hậu trường / trang quản trị","Thiết bị & Phòng live"],
+ ["绿幕","lǜ mù","phông xanh","Thiết bị & Phòng live"],
+ ["候场","hòu chǎng","chờ đến lượt lên hình","Thiết bị & Phòng live"],
+ ["设备","shè bèi","thiết bị","Thiết bị & Phòng live"],
+ ["备用设备","bèi yòng shè bèi","thiết bị dự phòng","Thiết bị & Phòng live"],
+ ["摄像机","shè xiàng jī","máy quay","Thiết bị & Phòng live"],
+ ["手机支架","shǒu jī zhī jià","giá đỡ điện thoại","Thiết bị & Phòng live"],
+ ["三脚架","sān jiǎo jià","chân máy","Thiết bị & Phòng live"],
+ ["镜头","jìng tóu","ống kính / khung hình","Thiết bị & Phòng live"],
+ ["补光灯","bǔ guāng dēng","đèn trợ sáng","Thiết bị & Phòng live"],
+ ["环形灯","huán xíng dēng","đèn vòng","Thiết bị & Phòng live"],
+ ["柔光箱","róu guāng xiāng","đèn softbox","Thiết bị & Phòng live"],
+ ["灯光","dēng guāng","ánh sáng / hệ thống đèn","Thiết bị & Phòng live"],
+ ["麦克风","mài kè fēng","micro","Thiết bị & Phòng live"],
+ ["无线麦","wú xiàn mài","micro không dây","Thiết bị & Phòng live"],
+ ["声卡","shēng kǎ","sound card","Thiết bị & Phòng live"],
+ ["耳返","ěr fǎn","tai nghe kiểm âm","Thiết bị & Phòng live"],
+ ["调音台","tiáo yīn tái","bàn mixer","Thiết bị & Phòng live"],
+ ["收音","shōu yīn","thu âm","Thiết bị & Phòng live"],
+ ["回声","huí shēng","tiếng vọng","Thiết bị & Phòng live"],
+ ["杂音","zá yīn","tạp âm","Thiết bị & Phòng live"],
+ ["电池","diàn chí","pin","Thiết bị & Phòng live"],
+ ["充电器","chōng diàn qì","bộ sạc","Thiết bị & Phòng live"],
+ ["网线","wǎng xiàn","dây mạng","Thiết bị & Phòng live"],
+ ["路由器","lù yóu qì","bộ định tuyến / router","Thiết bị & Phòng live"],
+
+ // 3. Kỹ thuật & Luồng phát (22 từ)
+ ["推流","tuī liú","đẩy luồng phát","Kỹ thuật & Luồng phát"],
+ ["推流软件","tuī liú ruǎn jiàn","phần mềm phát trực tiếp","Kỹ thuật & Luồng phát"],
+ ["直播伴侣","zhí bō bàn lǚ","công cụ livestream TikTok / Douyin","Kỹ thuật & Luồng phát"],
+ ["OBS","O B S","phần mềm OBS","Kỹ thuật & Luồng phát"],
+ ["画面","huà miàn","hình ảnh / khung hình","Kỹ thuật & Luồng phát"],
+ ["分辨率","fēn biàn lǜ","độ phân giải","Kỹ thuật & Luồng phát"],
+ ["帧率","zhēn lǜ","tốc độ khung hình","Kỹ thuật & Luồng phát"],
+ ["码率","mǎ lǜ","bitrate","Kỹ thuật & Luồng phát"],
+ ["延迟","yán chí","độ trễ","Kỹ thuật & Luồng phát"],
+ ["卡顿","kǎ dùn","giật, khựng","Kỹ thuật & Luồng phát"],
+ ["掉帧","diào zhēn","rớt khung hình","Kỹ thuật & Luồng phát"],
+ ["断流","duàn liú","mất luồng phát","Kỹ thuật & Luồng phát"],
+ ["网络不稳定","wǎng luò bù wěn dìng","mạng không ổn định","Kỹ thuật & Luồng phát"],
+ ["重连","chóng lián","kết nối lại","Kỹ thuật & Luồng phát"],
+ ["切换场景","qiē huàn chǎng jǐng","chuyển cảnh","Kỹ thuật & Luồng phát"],
+ ["静音","jìng yīn","tắt tiếng","Kỹ thuật & Luồng phát"],
+ ["延时","yán shí","bị trễ / delay","Kỹ thuật & Luồng phát"],
+ ["测试推流","cè shì tuī liú","kiểm tra luồng phát","Kỹ thuật & Luồng phát"],
+ ["正常","zhèng cháng","bình thường","Kỹ thuật & Luồng phát"],
+ ["检查","jiǎn chá","kiểm tra","Kỹ thuật & Luồng phát"],
+ ["调整","tiáo zhěng","điều chỉnh","Kỹ thuật & Luồng phát"],
+ ["切换","qiē huàn","chuyển đổi","Kỹ thuật & Luồng phát"],
+
+ // 4. Bán hàng, Kịch bản & Chốt đơn (27 từ)
+ ["直播带货","zhí bō dài huò","livestream bán hàng","Bán hàng & Chốt đơn"],
+ ["脚本","jiǎo běn","kịch bản livestream","Bán hàng & Chốt đơn"],
+ ["话术","huà shù","kịch bản lời thoại / cách chốt đơn","Bán hàng & Chốt đơn"],
+ ["排品","pái pǐn","sắp thứ tự sản phẩm","Bán hàng & Chốt đơn"],
+ ["选品","xuǎn pǐn","chọn sản phẩm","Bán hàng & Chốt đơn"],
+ ["样品","yàng pǐn","hàng mẫu","Bán hàng & Chốt đơn"],
+ ["库存","kù cún","tồn kho","Bán hàng & Chốt đơn"],
+ ["链接","liàn jiē","liên kết sản phẩm","Bán hàng & Chốt đơn"],
+ ["商品卡","shāng pǐn kǎ","thẻ sản phẩm","Bán hàng & Chốt đơn"],
+ ["贴片","tiē piàn","banner / đồ họa chèn","Bán hàng & Chốt đơn"],
+ ["主播状态","zhǔ bō zhuàng tài","trạng thái / phong độ host","Bán hàng & Chốt đơn"],
+ ["控场能力","kòng chǎng néng lì","khả năng làm chủ buổi live","Bán hàng & Chốt đơn"],
+ ["互动","hù dòng","tương tác","Bán hàng & Chốt đơn"],
+ ["留人","liú rén","giữ chân người xem","Bán hàng & Chốt đơn"],
+ ["引导关注","yǐn dǎo guān zhù","kêu gọi theo dõi","Bán hàng & Chốt đơn"],
+ ["口播","kǒu bō","lời giới thiệu nói trực tiếp","Bán hàng & Chốt đơn"],
+ ["卖点","mài diǎn","điểm bán hàng nổi bật","Bán hàng & Chốt đơn"],
+ ["产品讲解","chǎn pǐn jiǎng jiě","giới thiệu sản phẩm","Bán hàng & Chốt đơn"],
+ ["试用","shì yòng","dùng thử","Bán hàng & Chốt đơn"],
+ ["上链接","shàng liàn jiē","ghim / đưa link sản phẩm lên","Bán hàng & Chốt đơn"],
+ ["催单","cuī dān","thúc đẩy chốt đơn","Bán hàng & Chốt đơn"],
+ ["逼单","bī dān","tạo cấp bách để chốt đơn","Bán hàng & Chốt đơn"],
+ ["福利","fú lì","quyền lợi / ưu đãi","Bán hàng & Chốt đơn"],
+ ["优惠券","yōu huì quàn","phiếu giảm giá","Bán hàng & Chốt đơn"],
+ ["限时优惠","xiàn shí yōu huì","ưu đãi có thời hạn","Bán hàng & Chốt đơn"],
+ ["节奏","jié zòu","nhịp độ chương trình","Bán hàng & Chốt đơn"],
+ ["投流","tóu liú","chạy quảng cáo / đẩy lưu lượng","Bán hàng & Chốt đơn"],
+
+ // 5. Khán giả & Số liệu (25 từ)
+ ["观众","guān zhòng","khán giả","Khán giả & Số liệu"],
+ ["在线人数","zài xiàn rén shù","số người đang xem","Khán giả & Số liệu"],
+ ["人气","rén qì","độ phổ biến / lượng người quan tâm","Khán giả & Số liệu"],
+ ["评论区","píng lùn qū","khu vực bình luận","Khán giả & Số liệu"],
+ ["弹幕","dàn mù","bình luận chạy trên màn hình","Khán giả & Số liệu"],
+ ["点赞","diǎn zàn","lượt thích","Khán giả & Số liệu"],
+ ["关注","guān zhù","theo dõi","Khán giả & Số liệu"],
+ ["粉丝","fěn sī","người theo dõi / fan","Khán giả & Số liệu"],
+ ["礼物","lǐ wù","quà tặng ảo","Khán giả & Số liệu"],
+ ["打赏","dǎ shǎng","tặng quà / donate","Khán giả & Số liệu"],
+ ["钻石","zuàn shí","kim cương ảo","Khán giả & Số liệu"],
+ ["音浪","yīn làng","đơn vị quà tặng / doanh thu Douyin","Khán giả & Số liệu"],
+ ["成交额","chéng jiāo é","tổng giá trị giao dịch","Khán giả & Số liệu"],
+ ["GMV","G M V","tổng giá trị hàng hóa giao dịch","Khán giả & Số liệu"],
+ ["销售额","xiāo shòu é","doanh số bán hàng","Khán giả & Số liệu"],
+ ["订单量","dìng dān liàng","số lượng đơn hàng","Khán giả & Số liệu"],
+ ["转化率","zhuǎn huà lǜ","tỷ lệ chuyển đổi","Khán giả & Số liệu"],
+ ["客单价","kè dān jià","giá trị trung bình mỗi đơn","Khán giả & Số liệu"],
+ ["点击率","diǎn jī lǜ","tỷ lệ nhấp","Khán giả & Số liệu"],
+ ["停留时长","tíng liú shí cháng","thời gian xem trung bình","Khán giả & Số liệu"],
+ ["退货率","tuì huò lǜ","tỷ lệ trả hàng","Khán giả & Số liệu"],
+ ["KPI","K P I","chỉ tiêu hiệu suất","Khán giả & Số liệu"],
+ ["ROI","R O I","tỷ suất hoàn vốn","Khán giả & Số liệu"],
+ ["佣金","yòng jīn","hoa hồng","Khán giả & Số liệu"],
+ ["复购","fù gòu","mua lại","Khán giả & Số liệu"],
+
+ // 6. Vận hành & Quy trình (21 từ)
+ ["直播","zhí bō","livestream; phát trực tiếp","Vận hành & Quy trình"],
+ ["开播","kāi bō","bắt đầu live","Vận hành & Quy trình"],
+ ["下播","xià bō","kết thúc live","Vận hành & Quy trình"],
+ ["排班","pái bān","xếp ca","Vận hành & Quy trình"],
+ ["直播排期","zhí bō pái qī","lịch livestream","Vận hành & Quy trình"],
+ ["档期","dàng qī","khung lịch / lịch làm việc","Vận hành & Quy trình"],
+ ["开播时间","kāi bō shí jiān","giờ bắt đầu live","Vận hành & Quy trình"],
+ ["彩排","cǎi pái","tổng duyệt","Vận hành & Quy trình"],
+ ["晨会","chén huì","họp đầu ngày","Vận hành & Quy trình"],
+ ["日报","rì bào","báo cáo ngày","Vận hành & Quy trình"],
+ ["周报","zhōu bào","báo cáo tuần","Vận hành & Quy trình"],
+ ["数据报表","shù jù bào biǎo","bảng báo cáo số liệu","Vận hành & Quy trình"],
+ ["复盘","fù pán","tổng kết, phân tích sau phiên","Vận hành & Quy trình"],
+ ["复盘会","fù pán huì","họp tổng kết","Vận hành & Quy trình"],
+ ["目标","mù biāo","mục tiêu","Vận hành & Quy trình"],
+ ["完成率","wán chéng lǜ","tỷ lệ hoàn thành","Vận hành & Quy trình"],
+ ["跟进","gēn jìn","theo dõi, xử lý tiếp","Vận hành & Quy trình"],
+ ["确认","què rèn","xác nhận","Vận hành & Quy trình"],
+ ["截止时间","jié zhǐ shí jiān","thời hạn cuối","Vận hành & Quy trình"],
+ ["优先级","yōu xiān jí","mức độ ưu tiên","Vận hành & Quy trình"],
+ ["调整方案","tiáo zhěng fāng àn","điều chỉnh phương án","Vận hành & Quy trình"]
+];
+
+var CAT_META={
+ comm:{name:"Từ giao tiếp",icon:"🗣️"},
+ live:{name:"Phòng livestream",icon:"🎙️"}
+};
+
+var LIVE_SUBS=[
+ "Tất cả live",
+ "Nhân sự & Vai trò",
+ "Thiết bị & Phòng live",
+ "Kỹ thuật & Luồng phát",
+ "Bán hàng & Chốt đơn",
+ "Khán giả & Số liệu",
+ "Vận hành & Quy trình"
+];
+
+var CUSTOM_CATS = {};
+try {
+ CUSTOM_CATS = JSON.parse(localStorage.getItem("zh_custom_cats") || "{}");
+} catch(e){}
+
+function detectCategoryIcon(name){
+ if(!name) return "📁";
+ var s = name.toLowerCase();
+ if(/hoa\s*quả|trái\s*cây|fruit|táo|cam|chuối|dưa|xoài|dâu|lê|nho|chanh/.test(s)) return "🍎";
+ if(/ẩm\s*thực|món\s*ăn|đồ\s*ăn|ăn\s*uống|food|nhà\s*hàng|nấu|bếp|lẩu/.test(s)) return "🍜";
+ if(/đồ\s*uống|trà\s*sữa|cà\s*phê|nước|drink|beverage|bia|rượu/.test(s)) return "🧋";
+ if(/động\s*vật|thú\s*cưng|con\s*vật|animal|chó|mèo|chim|cá/.test(s)) return "🐱";
+ if(/du\s*lịch|khách\s*sạn|vé|máy\s*bay|travel|hotel|sân\s*bay/.test(s)) return "✈️";
+ if(/thời\s*trang|quần\s*áo|váy|giày|túi|fashion|clothes/.test(s)) return "👗";
+ if(/mỹ\s*phẩm|làm\s*đẹp|skincare|son|makeup|beauty|da/.test(s)) return "💄";
+ if(/công\s*nghệ|máy\s*tính|điện\s*thoại|cntt|tech|software|it/.test(s)) return "💻";
+ if(/học\s*tập|hsk|ngữ\s*pháp|sách|trường|study|school|thi/.test(s)) return "📚";
+ if(/thể\s*thao|bóng\s*đá|vận\s*động|gym|sport|chạy/.test(s)) return "⚽";
+ if(/gia\s*đình|nhà\s*cửa|nội\s*thất|home|family|bố|mẹ/.test(s)) return "🏡";
+ if(/công\s*việc|văn\s*phòng|kinh\s*doanh|công\s*ty|work|job|đồng\s*nghiệp/.test(s)) return "💼";
+ if(/mua\s*sắm|shopping|giá|tiền|chợ|market|buy|đắt|rẻ/.test(s)) return "🛍️";
+ if(/y\s*tế|sức\s*khỏe|bệnh\s*viện|thuốc|health|medical|bác\s*sĩ/.test(s)) return "💊";
+ if(/thời\s*tiết|khí\s*hậu|nắng|mưa|weather|lạnh|nóng/.test(s)) return "☀️";
+ if(/cảm\s*xúc|tâm\s*trạng|tình\s*cảm|emotion|vui|buồn/.test(s)) return "❤️";
+ if(/giao\s*thông|xe\s*cộ|đi\s*lại|traffic|tàu|xe\s*buýt/.test(s)) return "🚗";
+ return "📁";
+}
+
+function normalizeCat(raw){
+ if(!raw) return "comm";
+ var s = String(raw).trim();
+ var low = s.toLowerCase();
+ if(low === "comm" || low.includes("giao tiếp")) return "comm";
+ if(low === "live" || low.includes("livestream") || low.includes("phòng live")) return "live";
+ return s;
+}
+
+function registerCustomCat(name, icon){
+ if(!name) return;
+ var id = normalizeCat(name);
+ if(id === "comm" || id === "live") return;
+ if(!CUSTOM_CATS[id]){
+  CUSTOM_CATS[id] = {
+   name: name.trim(),
+   icon: icon || detectCategoryIcon(name)
+  };
+  try{ localStorage.setItem("zh_custom_cats", JSON.stringify(CUSTOM_CATS)); }catch(e){}
+ }
+}
+
+function getCategoryMeta(catId){
+ if(catId === "comm"){
+  return { id: "comm", name: "Từ giao tiếp", shortName: "Giao tiếp", icon: "🗣️", badgeCls: "tag-comm" };
+ }
+ if(catId === "live"){
+  return { id: "live", name: "Phòng livestream", shortName: "Livestream", icon: "🎙️", badgeCls: "tag-live" };
+ }
+ var saved = CUSTOM_CATS[catId];
+ var name = (saved && saved.name) || catId || "Chung";
+ var icon = (saved && saved.icon) || detectCategoryIcon(name);
+ return {
+  id: catId,
+  name: name,
+  shortName: name,
+  icon: icon,
+  badgeCls: "tag-custom"
+ };
+}
+
+function getAllCategories(){
+ var cats = [
+  { id: "comm", name: "Từ giao tiếp", icon: "🗣️", count: V.filter(function(x){return x.cat==="comm"}).length },
+  { id: "live", name: "Phòng livestream", icon: "🎙️", count: V.filter(function(x){return x.cat==="live"}).length }
+ ];
+ var seen = { comm: true, live: true };
+ V.forEach(function(w){
+  if(w.cat && !seen[w.cat]){
+   seen[w.cat] = true;
+   var meta = getCategoryMeta(w.cat);
+   cats.push({
+    id: w.cat,
+    name: meta.name,
+    icon: meta.icon,
+    count: V.filter(function(x){return x.cat === w.cat}).length
+   });
+  }
+ });
+ Object.keys(CUSTOM_CATS).forEach(function(cid){
+  if(!seen[cid]){
+   seen[cid] = true;
+   var meta = getCategoryMeta(cid);
+   cats.push({
+    id: cid,
+    name: meta.name,
+    icon: meta.icon,
+    count: V.filter(function(x){return x.cat === cid}).length
+   });
+  }
+ });
+ return cats;
+}
+
+function getCategorySubs(catId){
+ if(catId === "comm"){
+  return ["Tất cả giao tiếp", "Chào hỏi & Đại từ", "Sinh hoạt & Đời sống"];
+ }
+ if(catId === "live"){
+  return LIVE_SUBS;
+ }
+ var meta = getCategoryMeta(catId);
+ var allSubName = "Tất cả " + meta.name;
+ var subSet = {};
+ V.forEach(function(w){
+  if(w.cat === catId && w.sub && w.sub !== "Chung"){
+   subSet[w.sub] = true;
+  }
+ });
+ var subs = Object.keys(subSet);
+ return [allSubName].concat(subs);
+}
+
+// Dictionary Map for fast lookup & migration
+var DICT={};
+var MASTER_VOCAB=[];
+MASTER_COMM.forEach(function(a){
+ var item={h:a[0],p:a[1],m:a[2],cat:"comm",sub:a[3]||"Giao tiếp"};
+ DICT[a[0]]=item;
+ MASTER_VOCAB.push(item);
+});
+MASTER_LIVE.forEach(function(a){
+ var item={h:a[0],p:a[1],m:a[2],cat:"live",sub:a[3]||"Phòng live"};
+ DICT[a[0]]=item;
+ MASTER_VOCAB.push(item);
+});
+
+// Sentences & Grammar with structured categories and word-by-word pinyin
+var SENT=[
+ {cat:"comm",sub:"Chào hỏi & Giới thiệu",t:["老师","你","好"],py:"lǎo shī nǐ hǎo",pyTokens:["lǎoshī","nǐ","hǎo"],vi:"Chào thầy/cô"},
+ {cat:"comm",sub:"Chào hỏi & Giới thiệu",t:["我","是","学生"],py:"wǒ shì xué sheng",pyTokens:["wǒ","shì","xuéshēng"],vi:"Tôi là học sinh"},
+ {cat:"comm",sub:"Chào hỏi & Giới thiệu",t:["他","是","我","的","朋友"],py:"tā shì wǒ de péng you",pyTokens:["tā","shì","wǒ","de","péngyou"],vi:"Anh ấy là bạn của tôi"},
+ {cat:"comm",sub:"Sinh hoạt & Sở thích",t:["你","喝","水","吗"],py:"nǐ hē shuǐ ma",pyTokens:["nǐ","hē","shuǐ","ma"],vi:"Bạn uống nước không?"},
+ {cat:"comm",sub:"Sinh hoạt & Sở thích",t:["我","不","吃","饭"],py:"wǒ bù chī fàn",pyTokens:["wǒ","bù","chī","fàn"],vi:"Tôi không ăn cơm"},
+ {cat:"comm",sub:"Sinh hoạt & Sở thích",t:["你","喜欢","什么"],py:"nǐ xǐ huan shén me",pyTokens:["nǐ","xǐhuan","shénme"],vi:"Bạn thích gì?"},
+ {cat:"comm",sub:"Sinh hoạt & Sở thích",t:["我","喜欢","中国"],py:"wǒ xǐ huan Zhōng guó",pyTokens:["wǒ","xǐhuan","Zhōngguó"],vi:"Tôi thích Trung Quốc"}
+];
+
+var LIVE_SENT=[
+ {cat:"live",sub:"Thiết bị & Âm thanh",t:["先","检查","设备"],py:"xiān jiǎnchá shèbèi",pyTokens:["xiān","jiǎnchá","shèbèi"],vi:"Kiểm tra thiết bị trước nhé"},
+ {cat:"live",sub:"Thiết bị & Âm thanh",t:["把","麦克风","声音","调大","一点"],py:"bǎ màikèfēng shēngyīn tiáo dà yìdiǎn",pyTokens:["bǎ","màikèfēng","shēngyīn","tiáodà","yìdiǎn"],vi:"Tăng âm lượng micro lên một chút"},
+ {cat:"live",sub:"Thiết bị & Âm thanh",t:["声音","有","回声","检查","麦克风"],py:"shēngyīn yǒu huíshēng jiǎnchá màikèfēng",pyTokens:["shēngyīn","yǒu","huíshēng","jiǎnchá","màikèfēng"],vi:"Âm thanh bị vọng, kiểm tra micro"},
+ {cat:"live",sub:"Kỹ thuật & Vận hành",t:["网络","有点","卡","切换","备用网络"],py:"wǎngluò yǒudiǎn kǎ qiēhuàn bèiyòng wǎngluò",pyTokens:["wǎngluò","yǒudiǎn","kǎ","qiēhuàn","bèiyòng wǎngluò"],vi:"Mạng hơi lag, chuyển sang mạng dự phòng"},
+ {cat:"live",sub:"Kỹ thuật & Vận hành",t:["下播","后","把","数据","发到","群里"],py:"xiàbō hòu bǎ shùjù fā dào qún lǐ",pyTokens:["xiàbō","hòu","bǎ","shùjù","fādào","qúnlǐ"],vi:"Sau live gửi số liệu vào nhóm"},
+ {cat:"live",sub:"Kỹ thuật & Vận hành",t:["请","确认","今天","的","直播排期"],py:"qǐng quèrèn jīntiān de zhíbō páiqī",pyTokens:["qǐng","quèrèn","jīntiān","de","zhíbō páiqī"],vi:"Vui lòng xác nhận lịch livestream hôm nay"},
+ {cat:"live",sub:"Kỹ thuật & Vận hành",t:["我","确认","一下","再","答复","您"],py:"wǒ quèrèn yíxià zài dáfù nín",pyTokens:["wǒ","quèrèn","yíxià","zài","dáfù","nín"],vi:"Tôi xác nhận lại rồi phản hồi anh/chị"},
+ {cat:"live",sub:"Bán hàng & Tương tác",t:["把","商品链接","挂上"],py:"bǎ shāngpǐn liànjiē guà shàng",pyTokens:["bǎ","shāngpǐn liànjiē","guàshàng"],vi:"Ghim link sản phẩm lên"},
+ {cat:"live",sub:"Bán hàng & Tương tác",t:["先","讲","卖点"],py:"xiān jiǎng màidiǎn",pyTokens:["xiān","jiǎng","màidiǎn"],vi:"Nói điểm nổi bật trước"},
+ {cat:"live",sub:"Bán hàng & Tương tác",t:["主播","看","评论区"],py:"zhǔbō kàn pínglùnqū",pyTokens:["zhǔbō","kàn","pínglùnqū"],vi:"Host xem phần bình luận nhé"},
+ {cat:"live",sub:"Bán hàng & Tương tác",t:["在线人数","掉","了","赶紧","互动"],py:"zàixiàn rénshù diào le gǎnjǐn hùdòng",pyTokens:["zàixiàn rénshù","diào","le","gǎnjǐn","hùdòng"],vi:"Người xem giảm rồi, tương tác ngay"}
+];
+
+var FRUIT_SENT=[
+ {cat:"Hoa quả",sub:"Mua sắm hoa quả",t:["苹果","一斤","多少钱"],py:"píngguǒ yìjīn duōshao qián",pyTokens:["píngguǒ","yìjīn","duōshao qián"],vi:"Táo bao nhiêu tiền một cân?"},
+ {cat:"Hoa quả",sub:"Mua sắm hoa quả",t:["西瓜","很","甜","很","新鲜"],py:"xīguā hěn tián hěn xīnxiān",pyTokens:["xīguā","hěn","tián","hěn","xīnxiān"],vi:"Dưa hấu rất ngọt và rất tươi"},
+ {cat:"Hoa quả",sub:"Mua sắm hoa quả",t:["我","想","买","两斤","香蕉"],py:"wǒ xiǎng mǎi liǎngjīn xiāngjiāo",pyTokens:["wǒ","xiǎng","mǎi","liǎngjīn","xiāngjiāo"],vi:"Tôi muốn mua hai cân chuối"}
+];
+SENT=SENT.concat(LIVE_SENT).concat(FRUIT_SENT);
+var CUSTOM_SENT = ld("zh_custom_sentences", []);
+if(Array.isArray(CUSTOM_SENT) && CUSTOM_SENT.length){
+ CUSTOM_SENT.forEach(function(cs){
+  if(cs && cs.t && !SENT.some(function(s){ return s.t.join("") === cs.t.join(""); })){
+   SENT.push(cs);
+   if(cs.cat) registerCustomCat(cs.cat);
+  }
+ });
+}
+
+var GR=[
+ {cat:"comm",p:"S + 是 + N",d:"Câu khẳng định “là”",ex:"我是学生。",py:"wǒ shì xué sheng",vi:"Tôi là học sinh."},
+ {cat:"comm",p:"S + 不 + V",d:"Phủ định bằng 不",ex:"我不喝水。",py:"wǒ bù hē shuǐ",vi:"Tôi không uống nước."},
+ {cat:"comm",p:"…… 吗？",d:"Thêm 吗 cuối câu để hỏi có/không",ex:"你好吗？",py:"nǐ hǎo ma",vi:"Bạn khỏe không?"},
+ {cat:"comm",p:"S + 喜欢 + N/V",d:"Diễn tả sự yêu thích",ex:"我喜欢吃饭。",py:"wǒ xǐ huan chī fàn",vi:"Tôi thích ăn cơm."},
+ {cat:"comm",p:"S + 很 + Adj",d:"Tính từ thường đi kèm 很",ex:"老师很好。",py:"lǎo shī hěn hǎo",vi:"Cô giáo rất tốt."},
+ {cat:"comm",p:"A 的 B",d:"Sở hữu: A của B",ex:"我的朋友",py:"wǒ de péng you",vi:"Bạn của tôi."},
+ {cat:"comm",p:"什么",d:"Hỏi “cái gì”, đứng đúng vị trí của từ được hỏi",ex:"你吃什么？",py:"nǐ chī shén me",vi:"Bạn ăn gì?"}
+];
+
+var LIVE_GR=[
+ {cat:"live",p:"先 + V",d:"先 đặt trước động từ: làm việc gì trước",ex:"先检查设备。",py:"xiān jiǎnchá shèbèi",vi:"Kiểm tra thiết bị trước."},
+ {cat:"live",p:"把 + O + V + 好/上",d:"Câu 把: đưa đối tượng lên trước hành động xử lý",ex:"把商品链接挂上。",py:"bǎ shāngpǐn liànjiē guà shàng",vi:"Ghim link sản phẩm lên."},
+ {cat:"live",p:"有点 + Adj",d:"有点 diễn tả mức độ hơi / có chút",ex:"网络有点卡。",py:"wǎngluò yǒudiǎn kǎ",vi:"Mạng hơi lag."},
+ {cat:"live",p:"再 + V + 一点",d:"Đề nghị điều chỉnh thêm một chút",ex:"灯光再亮一点。",py:"dēngguāng zài liàng yìdiǎn",vi:"Đèn sáng thêm một chút."},
+ {cat:"live",p:"请 + V + 一下",d:"Cách nhờ vả lịch sự, mềm hơn",ex:"请确认一下直播排期。",py:"qǐng quèrèn yíxià zhíbō páiqī",vi:"Vui lòng xác nhận lịch live."},
+ {cat:"live",p:"先……再……",d:"Trình tự: trước tiên làm A, sau đó làm B",ex:"先切备用网络，再检查推流。",py:"xiān qiē bèiyòng wǎngluò, zài jiǎnchá tuīliú",vi:"Chuyển mạng dự phòng trước, sau đó kiểm tra luồng phát."}
+];
+GR=GR.concat(LIVE_GR);
+
+// State
+var V=[],view="learn",curWord=null,S={done:0,best:0},Q=null,SB=null;
+var filterCat="all",filterSub="Tất cả live",wordsCat="all",quizCat="all";
+
+function ld(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+// Load vocab with auto-migration to proper categories & character-separated pinyin
+var savedV=ld("zh_vocab",null);
+if(savedV&&Array.isArray(savedV)&&savedV.length){
+ V=savedV.map(function(w){
+  var m=DICT[w.h]||{cat:"comm",sub:"Khác"};
+  return{h:w.h,p:(m&&m.p)?m.p:w.p,m:w.m,cat:w.cat||m.cat,sub:w.sub||m.sub};
+ });
+}else{
+ V=MASTER_VOCAB.map(function(x){return Object.assign({},x)});
+}
+// Ensure any new master words are in V
+MASTER_VOCAB.forEach(function(m){
+ if(!V.some(function(w){return w.h===m.h}))V.push(Object.assign({},m));
+});
+sv("zh_vocab",V);
+S=ld("zh_stat",S);
+if(V.length)curWord=V[0];
+
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function toast(t){var e=$("#toast");e.textContent=t;e.style.display="block";setTimeout(function(){e.style.display="none"},1800)}
+var VOICE_OPTIONS = [
+ {
+  id: "sync_standard",
+  name: "Giọng Chuẩn Đồng Bộ",
+  icon: "🌐",
+  tag: "100% Đồng bộ ĐT & MT",
+  desc: "Phát âm Bắc Kinh chuẩn, đồng bộ tuyệt đối trên mọi điện thoại & máy tính (Khuyên dùng)",
+  type: "online",
+  rateMult: 1.0
+ },
+ {
+  id: "female1",
+  name: "Giọng Nữ 1 (Tự nhiên)",
+  icon: "👩",
+  tag: "Ngọt ngào, trong trẻo",
+  desc: "Phát âm nhẹ nhàng, trong sáng, chuẩn thanh điệu",
+  type: "system",
+  gender: "female",
+  pitch: 1.06,
+  rateMult: 1.0
+ },
+ {
+  id: "female2",
+  name: "Giọng Nữ 2 (Phổ thông)",
+  icon: "👩",
+  tag: "Điềm tĩnh, rõ ràng",
+  desc: "Giọng đọc tự nhiên, phát âm chuẩn đàm thoại",
+  type: "system",
+  gender: "female",
+  pitch: 0.98,
+  rateMult: 1.0
+ },
+ {
+  id: "male1",
+  name: "Giọng Nam 1 (Trầm ấm)",
+  icon: "👨",
+  tag: "Dứt khoát, nam tính",
+  desc: "Giọng nam trầm ấm, dứt khoát, âm sắc nam tính",
+  type: "system",
+  gender: "male",
+  pitch: 0.72,
+  rateMult: 0.94
+ },
+ {
+  id: "male2",
+  name: "Giọng Nam 2 (Trẻ trung)",
+  icon: "👨",
+  tag: "Năng động, lưu loát",
+  desc: "Giọng nam lưu loát, năng động phong cách livestream",
+  type: "system",
+  gender: "male",
+  pitch: 0.80,
+  rateMult: 1.02
+ }
+];
+
+var SPEED_OPTIONS = [
+ {
+  val: 0.75,
+  name: "0.75x · Rất chậm",
+  desc: "Nghe thật rõ từng thanh điệu và chi tiết phát âm"
+ },
+ {
+  val: 0.85,
+  name: "0.85x · Chậm vừa",
+  desc: "Dễ theo dõi và nhại lại cho người mới bắt đầu"
+ },
+ {
+  val: 0.95,
+  name: "0.95x · Chuẩn tự nhiên",
+  desc: "Tốc độ nói đàm thoại đời sống thực tế (Khuyên dùng)"
+ },
+ {
+  val: 1.10,
+  name: "1.10x · Nhanh lưu loát",
+  desc: "Luyện phản xạ nghe nói như người bản xứ"
+ },
+ {
+  val: 1.25,
+  name: "1.25x · Siêu tốc",
+  desc: "Thử thách bắt nhịp phòng livestream bán hàng"
+ }
+];
+
+// Tự động kích hoạt Giọng Chuẩn Đồng Bộ làm mặc định để khắc phục lệch giọng giữa điện thoại và máy tính
+var savedVoiceId = localStorage.getItem("zh_voice_id");
+if(!localStorage.getItem("zh_voice_sync_v2")){
+ savedVoiceId = "sync_standard";
+ localStorage.setItem("zh_voice_id", "sync_standard");
+ localStorage.setItem("zh_voice_sync_v2", "1");
+}
+var curVoiceId = (savedVoiceId && VOICE_OPTIONS.some(function(x){ return x.id === savedVoiceId; })) ? savedVoiceId : "sync_standard";
+var curSpeed = parseFloat(localStorage.getItem("zh_voice_speed")) || 0.95;
+var openDropdown = null; // "voice" | "speed" | "learnCat" | "sentCat" | null
+
+function toggleDropdown(type, e){
+ if(e){
+  e.stopPropagation();
+ }
+ openDropdown = (openDropdown === type) ? null : type;
+ render();
+}
+
+function selectVoice(id){
+ curVoiceId = id;
+ localStorage.setItem("zh_voice_id", id);
+ openDropdown = null;
+ var v = VOICE_OPTIONS.find(function(x){ return x.id === id; });
+ toast("✔ Đã chọn " + (v ? v.name + " (" + v.tag + ")" : id));
+ if(view === "sent" && SB && SB.s) speak(SB.s.t.join(""));
+ else if(curWord) speak(curWord.h);
+ else speak("你好");
+ render();
+}
+
+function selectSpeed(s){
+ curSpeed = s;
+ localStorage.setItem("zh_voice_speed", s);
+ openDropdown = null;
+ toast("⚡ Đã chọn tốc độ: " + s + "x");
+ if(view === "sent" && SB && SB.s) speak(SB.s.t.join(""));
+ else if(curWord) speak(curWord.h);
+ else speak("你好");
+ render();
+}
+
+function getVoiceDropdownHtml(){
+ var curVoice = VOICE_OPTIONS.find(function(v){ return v.id === curVoiceId; }) || VOICE_OPTIONS[0];
+ var voiceDropdownMenu = openDropdown === 'voice' ? (
+  '<div class="dd-menu dd-menu-voice">'+
+   '<div class="dd-header" style="display:flex;justify-content:space-between;align-items:center">' +
+    '<span>Chọn giọng phát âm</span>' +
+    '<span style="font-weight:normal;color:var(--ok);font-size:11px">🌐 Đồng bộ ĐT & MT</span>' +
+   '</div>'+
+   VOICE_OPTIONS.map(function(v){
+    var isSel = v.id === curVoiceId;
+    return '<div class="dd-item '+(isSel?'selected':'')+'" onclick="selectVoice(\''+v.id+'\')">'+
+     '<div class="dd-check">'+(isSel?'✔':'')+'</div>'+
+     '<div class="dd-content">'+
+      '<div class="dd-title"><span>'+v.icon+' '+esc(v.name)+'</span><span class="dd-tag">'+esc(v.tag)+'</span></div>'+
+      '<div class="dd-desc">'+esc(v.desc)+'</div>'+
+     '</div>'+
+    '</div>';
+   }).join("")+
+  '</div>'
+ ) : '';
+
+ return '<div class="dd-wrap">'+
+  '<button class="dd-btn '+(openDropdown==='voice'?'open':'')+'" onclick="toggleDropdown(\'voice\', event)" title="Chọn giọng đọc">'+
+   '<span>'+curVoice.icon+' '+esc(curVoice.name)+'</span>'+
+   '<span class="dd-arrow">'+(openDropdown==='voice'?'▲':'▼')+'</span>'+
+  '</button>'+
+  voiceDropdownMenu+
+ '</div>';
+}
+
+function getSpeedDropdownHtml(){
+ var speedDropdownMenu = openDropdown === 'speed' ? (
+  '<div class="dd-menu dd-menu-speed">'+
+   '<div class="dd-header">Tốc độ phát âm</div>'+
+   SPEED_OPTIONS.map(function(s){
+    var isSel = Math.abs(s.val - curSpeed) < 0.01;
+    return '<div class="dd-item '+(isSel?'selected':'')+'" onclick="selectSpeed('+s.val+')">'+
+     '<div class="dd-check">'+(isSel?'✔':'')+'</div>'+
+     '<div class="dd-content">'+
+      '<div class="dd-title">'+esc(s.name)+'</div>'+
+      '<div class="dd-desc">'+esc(s.desc)+'</div>'+
+     '</div>'+
+    '</div>';
+   }).join("")+
+  '</div>'
+ ) : '';
+
+ return '<div class="dd-wrap">'+
+  '<button class="dd-btn '+(openDropdown==='speed'?'open':'')+'" onclick="toggleDropdown(\'speed\', event)" title="Chọn tốc độ đọc">'+
+   '<span>⚡ '+curSpeed+'x</span>'+
+   '<span class="dd-arrow">'+(openDropdown==='speed'?'▲':'▼')+'</span>'+
+  '</button>'+
+  speedDropdownMenu+
+ '</div>';
+}
+
+function selectLearnCategory(catId){
+ if(catId === "all"){
+  filterCat = "all";
+  filterSub = "all";
+ } else {
+  filterCat = catId;
+  filterSub = "all";
+ }
+ openDropdown = null;
+ openDrawer = null;
+ var list = getFilteredV();
+ if(list.length){
+  var inList = list.some(function(w){ return curWord && w.h === curWord.h; });
+  if(!inList){
+   curWord = list[0];
+   speak(curWord.h);
+  }
+ }
+ var meta = getCategoryMeta(catId);
+ toast("✔ Đã chọn danh mục: " + (catId === "all" ? "Tất cả" : meta.name) + " (" + list.length + " từ)");
+ render();
+}
+
+function scrollToWordList(){
+ var el = document.querySelector(".sec-hd");
+ if(el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+var audioPlayer = null;
+var cachedVoices = [];
+
+function updateVoicesList(){
+ if(!window.speechSynthesis) return;
+ cachedVoices = speechSynthesis.getVoices() || [];
+}
+
+if(typeof window !== "undefined" && window.speechSynthesis){
+ updateVoicesList();
+ if(speechSynthesis.onvoiceschanged !== undefined){
+  speechSynthesis.onvoiceschanged = updateVoicesList;
+ }
+}
+
+function stopSpeaking(){
+ if(audioPlayer){
+  try {
+   audioPlayer.pause();
+   audioPlayer.currentTime = 0;
+  } catch(e){}
+ }
+ if(window.speechSynthesis){
+  try {
+   if(speechSynthesis.speaking || speechSynthesis.pending){
+    speechSynthesis.cancel();
+   }
+  } catch(e){}
+ }
+}
+
+function playOnlineAudio(t, speed){
+ try {
+  stopSpeaking();
+  var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=zh-CN&client=tw-ob&q=" + encodeURIComponent(t);
+  audioPlayer = new Audio(url);
+  audioPlayer.playbackRate = speed || curSpeed || 0.95;
+  var p = audioPlayer.play();
+  if(p !== undefined){
+   p.catch(function(e){
+    console.warn("Online audio playback failed, falling back to system speech:", e);
+    speakDeviceFallback(t, speed);
+   });
+  }
+ } catch(e){
+  speakDeviceFallback(t, speed);
+ }
+}
+
+function speakDeviceFallback(t, speed){
+ if(!window.speechSynthesis) return;
+ try {
+  if(speechSynthesis.speaking || speechSynthesis.pending){
+   speechSynthesis.cancel();
+  }
+  var u = new SpeechSynthesisUtterance(t);
+  u.lang = "zh-CN";
+  u.rate = speed || curSpeed || 0.95;
+  var voice = getBestChineseVoice("female");
+  if(voice) u.voice = voice;
+  speechSynthesis.speak(u);
+ } catch(e){}
+}
+
+function getBestChineseVoice(targetGender){
+ if(!window.speechSynthesis) return null;
+ var all = cachedVoices.length ? cachedVoices : speechSynthesis.getVoices();
+ if(!all || !all.length) return null;
+
+ // Lọc tiếng Trung phổ thông (Mandarin), loại bỏ tiếng Quảng Đông (zh-HK / Sin-ji)
+ var zhVoices = all.filter(function(v){
+  if(/zh-hk|cantonese|sin-ji|sinji/i.test(v.lang) || /zh-hk|cantonese|sin-ji|sinji/i.test(v.name)) return false;
+  return /zh|chinese|mandarin|cmn/i.test(v.lang) || /chinese|mandarin/i.test(v.name);
+ });
+ if(!zhVoices.length) return null;
+
+ var cnVoices = zhVoices.filter(function(v){
+  return /zh-cn|cmn-hans/i.test(v.lang);
+ });
+ var pool = cnVoices.length ? cnVoices : zhVoices;
+
+ if(targetGender === "female"){
+  var femalePatterns = [
+   /xiaoxiao/i,
+   /xiaoyi/i,
+   /xiaochen/i,
+   /xiaohan/i,
+   /huihui/i,
+   /yaoyao/i,
+   /female|woman|girl|ting-ting/i
+  ];
+  for(var i = 0; i < femalePatterns.length; i++){
+   var match = pool.find(function(v){ return femalePatterns[i].test(v.name); });
+   if(match) return match;
+  }
+ }
+
+ if(targetGender === "male"){
+  var malePatterns = [
+   /yunxi/i,
+   /yunjian/i,
+   /yunyang/i,
+   /kangkang/i,
+   /male|man|boy|danny/i
+  ];
+  for(var i = 0; i < malePatterns.length; i++){
+   var match = pool.find(function(v){ return malePatterns[i].test(v.name); });
+   if(match) return match;
+  }
+ }
+
+ return pool[0];
+}
+
+function speak(t, customVoiceId){
+ if(!t) return;
+ var voiceOpt = VOICE_OPTIONS.find(function(x){ return x.id === (customVoiceId || curVoiceId); }) || VOICE_OPTIONS[0];
+ var speed = curSpeed * (voiceOpt.rateMult || 1.0);
+
+ stopSpeaking();
+
+ // Chế độ 1: Giọng chuẩn trực tuyến đồng bộ (Mặc định & Khuyên dùng: 100% giống nhau trên ĐT và MT)
+ if(voiceOpt.type === "online"){
+  playOnlineAudio(t, speed);
+  return;
+ }
+
+ // Chế độ 2: Giọng hệ thống thiết bị (SpeechSynthesis)
+ if(window.speechSynthesis){
+  try {
+   var u = new SpeechSynthesisUtterance(t);
+   u.lang = "zh-CN";
+   u.rate = speed;
+
+   var voice = getBestChineseVoice(voiceOpt.gender);
+   if(voice){
+    u.voice = voice;
+    var isRealMale = /yunxi|yunjian|yunyang|kangkang|male|man/i.test(voice.name);
+    if(voiceOpt.gender === "male"){
+     u.pitch = isRealMale ? (voiceOpt.id === "male1" ? 0.92 : 1.02) : (voiceOpt.pitch || 0.72);
+    } else {
+     var isRealFemale = /xiaoxiao|xiaoyi|xiaochen|xiaohan|huihui|yaoyao/i.test(voice.name);
+     u.pitch = isRealFemale ? (voiceOpt.id === "female1" ? 1.06 : 0.98) : (voiceOpt.pitch || 1.0);
+    }
+    speechSynthesis.speak(u);
+    return;
+   }
+  } catch(e){
+   console.warn("SpeechSynthesis error:", e);
+  }
+ }
+
+ // Fallback mượt mà về giọng chuẩn online nếu thiết bị không có giọng hệ thống
+ playOnlineAudio(t, speed);
+}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function norm(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[\s,.。，]/g,"").toLowerCase()}
+function ruby(w,cls){
+ var c=Array.from(w.h),s=w.p.split(/\s+/),ok=s.length===c.length;
+ return '<div class="hz '+(cls||"")+'">'+c.map(function(x,i){
+  return '<button class="ch" onclick="speak(\''+x+'\')" title="Nghe chữ này"><small>'+(ok?esc(s[i]):"&nbsp;")+'</small><b>'+esc(x)+'</b></button>'
+ }).join("")+'</div>'+(ok?"":'<div class="py">'+esc(w.p)+'</div>');
+}
+
+var TABS=[["learn","📖","Học"],["sent","🧩","Ghép câu"],["quiz","📝","Kiểm tra"],["gram","💬","Ngữ pháp"],["words","📚","Từ vựng"]];
+function go(v){
+ view=v;
+ stopSpeaking();
+ updateAiContextBar();
+ updateAiQuickPills();
+ render();
+}
+
+function updateAiContextBar(){
+ var bar = $("#aiContextBar");
+ if(!bar) return;
+ var txt = "";
+ if(view === "sent"){
+  var sText = (SB && SB.s) ? SB.s.t.join("") : "我是学生";
+  txt = '📍 Đang ở: <b>Ghép câu</b> · Câu: <b>"' + esc(sText) + '"</b>';
+ } else if(view === "learn"){
+  var wText = curWord ? curWord.h : "";
+  var catMeta = curWord ? getCategoryMeta(curWord.cat) : null;
+  txt = '📍 Đang ở: <b>Học từ vựng</b> · <b>"' + esc(wText) + '"</b> (' + (catMeta ? catMeta.icon + " " + esc(catMeta.name) : "") + ')';
+ } else if(view === "quiz"){
+  txt = '📍 Đang ở: <b>Kiểm tra từ vựng (Quiz)</b>';
+ } else if(view === "gram"){
+  txt = '📍 Đang ở: <b>Ngữ pháp & Mẫu câu</b>';
+ } else if(view === "words"){
+  txt = '📍 Đang ở: <b>Quản lý từ vựng & Danh mục</b>';
+ }
+ bar.innerHTML = txt;
+}
+
+function updateAiQuickPills(){
+ var box = $("#aiQuickPills");
+ if(!box) return;
+ var pills = [];
+ if(view === "sent"){
+  var curSentText = (SB && SB.s) ? SB.s.t.join("") : "我是学生";
+  pills = [
+   { label: "💡 Giải thích ngữ pháp câu này", prompt: "Giải thích chi tiết cấu trúc ngữ pháp và trật tự từ của câu: \"" + curSentText + "\"" },
+   { label: "🧩 Phân tích các từ ghép", prompt: "Phân tích nghĩa và cách dùng của các từ ghép cấu thành câu: \"" + curSentText + "\"" },
+   { label: "✨ 3 câu ghép tương tự", prompt: "Gợi ý 3 câu ghép tiếng Trung tương tự có cấu trúc giống câu \"" + curSentText + "\" trong khối ```sent để tôi thêm vào luyện ghép câu" },
+   { label: "🍎 3 câu ghép chủ đề Hoa quả", prompt: "Gợi ý 3 câu ghép tiếng Trung về chủ đề Hoa quả trong khối ```sent để tôi thêm vào phần Ghép câu" },
+   { label: "🎙️ 3 câu ghép phòng live", prompt: "Gợi ý 3 câu khẩu ngữ phòng livestream thực tế trong khối ```sent để tôi thêm vào luyện ghép câu" }
+  ];
+ } else if(view === "learn"){
+  var word = curWord ? curWord.h : "你好";
+  pills = [
+   { label: "💡 Đặt câu với từ " + word, prompt: "Giải thích chi tiết từ \"" + word + "\" và đặt 2 câu ví dụ thực tế có phiên âm và dịch nghĩa" },
+   { label: "🍎 5 từ vựng hoa quả", prompt: "Cho tôi 5 từ vựng tiếng Trung chủ đề Hoa quả kèm pinyin và nghĩa tiếng Việt" },
+   { label: "🔥 5 từ chốt đơn hot trong live", prompt: "Gợi ý 5 từ vựng chốt đơn cực hot trong live Douyin/TikTok" },
+   { label: "🎙️ 5 từ thiết bị phòng live", prompt: "Gợi ý 5 từ vựng chuyên ngành về thiết bị và kỹ thuật phòng live" }
+  ];
+ } else if(view === "quiz"){
+  pills = [
+   { label: "💡 Mẹo nhớ từ làm bài kiểm tra", prompt: "Cho tôi 3 mẹo ghi nhớ nhanh từ vựng để làm bài kiểm tra tiếng Trung không bị nhầm lẫn" },
+   { label: "🎯 3 câu đố vui tiếng Trung", prompt: "Hãy ra cho tôi 3 câu đố vui trắc nghiệm tiếng Trung để tôi thử sức" },
+   { label: "🔥 Ôn từ vựng phòng live", prompt: "Tóm tắt những từ vựng quan trọng nhất của phòng livestream cần nhớ" }
+  ];
+ } else if(view === "gram"){
+  pills = [
+   { label: "💡 Cách dùng câu chữ 把", prompt: "Giải thích cách dùng câu chữ 把 trong tiếng Trung và cho ví dụ trong bán hàng live" },
+   { label: "💡 Cấu trúc câu so sánh 比", prompt: "Giải thích cách đặt câu so sánh với chữ 比 trong tiếng Trung kèm ví dụ" },
+   { label: "💡 Phân biệt câu chữ 把 và 被", prompt: "Phân biệt câu chữ 把 và 被 trong tiếng Trung" }
+  ];
+ } else if(view === "words"){
+  pills = [
+   { label: "📁 Gợi ý danh mục từ vựng mới", prompt: "Gợi ý các danh mục từ vựng hữu ích mà tôi nên tạo thêm cho ứng dụng" },
+   { label: "🍜 Tạo danh mục Ẩm thực", prompt: "Tạo danh mục từ vựng mới 'Ẩm thực' gồm 5 món ăn Trung Quốc nổi tiếng kèm pinyin và nghĩa" },
+   { label: "✈️ Tạo danh mục Du lịch", prompt: "Tạo danh mục từ vựng mới 'Du lịch' gồm 5 từ vựng cần thiết ở sân bay và khách sạn" }
+  ];
+ }
+ box.innerHTML = pills.map(function(p){
+  return '<button class="ai-quick-btn" onclick=\'askQuickAi(' + JSON.stringify(p.prompt) + ')\'>' + esc(p.label) + '</button>';
+ }).join("");
+}
+
+function getAiCurrentContext(){
+ var ctx = "--- THÔNG TIN VỊ TRÍ HIỆN TẠI CỦA NGƯỜI DÙNG ---\n";
+ ctx += "Tab đang mở trong ứng dụng: " + view + ".\n";
+ if(view === "sent"){
+  if(SB && SB.s){
+   ctx += "Người dùng đang ở phần GHÉP CÂU (Sentence Puzzle).\n";
+   ctx += "Câu người dùng đang luyện tập trên màn hình: \"" + SB.s.t.join("") + "\"\n";
+   ctx += "Phiên âm Pinyin: \"" + SB.s.py + "\"\n";
+   ctx += "Dịch nghĩa tiếng Việt: \"" + SB.s.vi + "\"\n";
+   ctx += "Các phần tử từ ghép tạo nên câu: [" + SB.s.t.join(", ") + "].\n";
+   ctx += "Danh mục của câu: " + (SB.s.cat === "comm" ? "Từ giao tiếp" : (SB.s.cat === "live" ? "Phòng livestream" : SB.s.cat)) + " (Nhóm: " + (SB.s.sub || "Chung") + ").\n";
+   ctx += "LƯU Ý ĐẶC BIỆT: Khi người dùng hỏi về từ ghép, ngữ pháp, sắp xếp câu, từ vựng hoặc câu tương tự, bạn HÃY TẬP TRUNG GIẢI THÍCH TRỰC TIẾP CÂU NÀY VÀ CÁC THÀNH PHẦN TỪ GHÉP CỦA NÓ.\n";
+  }
+ } else if(view === "learn"){
+  if(curWord){
+   ctx += "Người dùng đang ở phần HỌC TỪ VỰNG.\n";
+   ctx += "Từ vựng đang hiển thị trên màn hình: \"" + curWord.h + "\" (Pinyin: " + curWord.p + " - Nghĩa: " + curWord.m + ").\n";
+   ctx += "Danh mục: " + curWord.cat + " (Nhóm: " + (curWord.sub || "Chung") + ").\n";
+  }
+ } else if(view === "quiz"){
+  ctx += "Người dùng đang ở phần KIỂM TRA TỪ VỰNG (Quiz).\n";
+ } else if(view === "gram"){
+  ctx += "Người dùng đang ở phần NGỮ PHÁP & MẪU CÂU.\n";
+ } else if(view === "words"){
+  ctx += "Người dùng đang ở phần QUẢN LÝ DANH MỤC & TỪ VỰNG.\n";
+ }
+ var allCats = getAllCategories();
+ ctx += "Các danh mục từ vựng hiện có: " + allCats.map(function(c){ return c.name; }).join(", ") + ".\n";
+ ctx += "------------------------------------------------\n";
+ return ctx;
+}
+
+function render(){
+ $("#nav").innerHTML=TABS.map(function(t){return '<button class="'+(t[0]==view?"on":"")+'" onclick="go(\''+t[0]+'\')"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join("");
+ $("#stat").textContent="Đã luyện: "+S.done+" · Điểm cao: "+S.best;
+ ({learn:rLearn,sent:rSent,quiz:rQuiz,gram:rGram,words:rWords})[view]();
+ updateAiFabStatus();
+}
+
+var openDrawer = null;
+
+function getFilteredV(){
+ return V.filter(function(w){
+  if(filterCat === "all") return true;
+  if(w.cat !== filterCat) return false;
+  if(!filterSub || filterSub === "all" || filterSub.startsWith("Tất cả")) return true;
+  if(filterCat === "comm"){
+   if(filterSub === "Chào hỏi & Đại từ") return (w.sub==="Chào hỏi"||w.sub==="Đại từ"||w.sub==="Quan hệ & Xưng hô"||w.sub==="Từ vựng chung");
+   if(filterSub === "Sinh hoạt & Đời sống") return (w.sub==="Sinh hoạt & Đời sống"||w.sub==="Cơ bản"||w.sub==="Tính từ"||w.sub==="Cảm xúc & Ý muốn"||w.sub==="Từ để hỏi");
+  }
+  return w.sub === filterSub;
+ });
+}
+
+function selectCatAll(){
+ filterCat = "all";
+ filterSub = "all";
+ openDrawer = null;
+ var list = getFilteredV();
+ if(!list.some(function(w){return curWord&&w.h===curWord.h})){
+  curWord = list[0] || V[0];
+ }
+ render();
+}
+
+function toggleDrawer(which){
+ if(openDrawer === which){
+  openDrawer = null;
+ } else {
+  openDrawer = which;
+  if(filterCat !== which){
+   filterCat = which;
+   filterSub = "all";
+  }
+  var list = getFilteredV();
+  if(!list.some(function(w){return curWord&&w.h===curWord.h})){
+   curWord = list[0] || V[0];
+  }
+ }
+ render();
+}
+
+function selectCatSub(cat, sub){
+ filterCat = cat;
+ filterSub = sub;
+ var list = getFilteredV();
+ if(!list.some(function(w){return curWord&&w.h===curWord.h})){
+  curWord = list[0] || V[0];
+ }
+ render();
+}
+
+function selectLiveSub(sub){ selectCatSub("live", sub); }
+function selectCommSub(sub){ selectCatSub("comm", sub); }
+
+function stepWord(dir){
+ var list=getFilteredV();
+ if(!list.length)return;
+ var i=list.findIndex(function(w){return curWord&&w.h===curWord.h});
+ if(i<0)i=0;
+ var ni=(i+dir+list.length)%list.length;
+ curWord=list[ni];
+ speak(curWord.h);
+ updateAiContextBar();
+ updateAiQuickPills();
+ render();
+}
+
+function selectWord(h){
+ var found=V.find(function(w){return w.h===h});
+ if(found){
+  curWord=found;
+  speak(found.h);
+  updateAiContextBar();
+  updateAiQuickPills();
+ }
+ render();
+}
+
+function rLearn(){
+ var list=getFilteredV();
+ if(!curWord||!list.some(function(w){return w.h===curWord.h})){
+  curWord=list[0]||V[0];
+ }
+ var w=curWord;
+ var commCount=V.filter(function(x){return x.cat==="comm"}).length;
+ var liveCount=V.filter(function(x){return x.cat==="live"}).length;
+
+ var meta = getCategoryMeta(w.cat);
+ var tagHtml = '<span class="tag ' + meta.badgeCls + '" style="cursor:pointer" onclick="toggleDropdown(\'learnCat\', event)" title="Chạm để mở danh sách danh mục">' + meta.icon + ' ' + esc(meta.name) + ' ▾</span>' +
+  (w.sub && w.sub !== "Chung" ? '<span class="tag-sub">' + esc(w.sub) + '</span>' : '');
+
+ var curVoice = VOICE_OPTIONS.find(function(x){ return x.id === curVoiceId; }) || VOICE_OPTIONS[0];
+
+ var learnCatList = [
+  { id: "all", name: "Tất cả", icon: "📑", count: V.length }
+ ].concat(getAllCategories());
+
+ var learnCatDropdownMenu = openDropdown === 'learnCat' ? (
+  '<div class="dd-menu left-align" style="width:290px;max-width:calc(100vw - 32px)">'+
+   '<div class="dd-header" style="display:flex;justify-content:space-between;align-items:center">'+
+    '<span>Danh mục từ vựng (' + V.length + ' từ)</span>'+
+    '<span style="font-weight:normal;color:var(--mute);font-size:11px">Chạm để chọn</span>'+
+   '</div>'+
+   '<div style="max-height:280px;overflow-y:auto">'+
+    learnCatList.map(function(c){
+     var isSel = (filterCat === c.id);
+     var subs = (c.id === "all") ? [] : getCategorySubs(c.id).filter(function(s){ return !s.startsWith("Tất cả"); });
+     var subText = subs.length ? subs.join(" · ") : "Toàn bộ " + c.count + " từ vựng";
+
+     return '<div class="dd-item '+(isSel?'selected':'')+'" onclick="selectLearnCategory(\''+esc(c.id)+'\')">'+
+      '<div class="dd-check">'+(isSel?'✔':'')+'</div>'+
+      '<div style="flex:1;min-width:0">'+
+       '<div class="dd-title" style="display:flex;align-items:center;justify-content:space-between">'+
+        '<span style="font-weight:600">'+c.icon+' '+esc(c.name)+'</span>'+
+        '<span class="mute" style="font-size:11px;font-weight:normal">('+c.count+')</span>'+
+       '</div>'+
+       '<div class="dd-desc" style="font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(subText)+'</div>'+
+      '</div>'+
+     '</div>';
+    }).join("")+
+   '</div>'+
+   '<div class="dd-item" style="background:var(--bg);padding:9px 14px;font-size:12px;color:var(--red);font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-top:1px solid var(--line)" onclick="openDropdown=null;render();setTimeout(scrollToWordList,50)">'+
+    '<span>Xem chi tiết danh sách bên dưới</span> <span>⬇</span>'+
+   '</div>'+
+  '</div>'
+ ) : '';
+
+  var ddControlsHtml = 
+   '<div class="dd-controls-row">'+
+    '<div class="dd-wrap">'+
+     '<button class="dd-btn '+(openDropdown==='learnCat'?'open':'')+'" onclick="toggleDropdown(\'learnCat\', event)" style="padding:7px 12px;font-size:13px;border-radius:12px" title="Xem danh mục dạng danh sách list">'+
+      '<span>📂 Danh mục</span>'+
+      '<span class="dd-arrow">'+(openDropdown==='learnCat'?'▲':'▼')+'</span>'+
+     '</button>'+
+     learnCatDropdownMenu+
+    '</div>'+
+    getVoiceDropdownHtml()+
+    getSpeedDropdownHtml()+
+   '</div>';
+
+ var h='<div class="card center sticky-hero">'+
+  '<div style="margin-bottom:8px">'+tagHtml+'</div>'+
+  ruby(w)+
+  '<div class="mean">'+esc(w.m)+'</div>'+
+  '<div class="py">'+esc(w.p)+'</div>'+
+  '<div class="mute">Chạm từng chữ để nghe riêng chữ đó</div>'+
+  '<div class="row">'+
+   '<button class="btn ghost" onclick="stepWord(-1)">◀</button>'+
+   '<button class="btn" onclick="speak(\''+esc(w.h)+'\')">🔊 Nghe cả từ</button>'+
+   '<button class="btn ghost" onclick="stepWord(1)">▶</button>'+
+  '</div>'+
+  ddControlsHtml+
+ '</div>';
+
+ // Filter controls (Dynamic Categories & Dropdown Drawers)
+ var allCats = getAllCategories();
+ var isAll = filterCat === "all";
+
+ h += '<div class="sec-hd"><h2>Phân loại từ vựng</h2><span class="mute">Hiện có ' + list.length + '/' + V.length + ' từ</span></div>';
+ 
+ h += '<div class="filter-bar">' +
+  '<button class="filter-btn ' + (isAll ? 'active' : '') + '" onclick="selectCatAll()">Tất cả (' + V.length + ')</button>' +
+  allCats.map(function(c){
+   var isActive = filterCat === c.id;
+   var isOpen = openDrawer === c.id;
+   var btnLabel = c.icon + " " + c.name + " (" + c.count + ")";
+   if(isActive && filterSub !== "all" && !filterSub.startsWith("Tất cả")){
+    btnLabel = c.icon + " " + filterSub.replace(" & ", "/");
+   }
+   return '<button class="filter-btn ' + (isActive ? 'active' : '') + ' ' + (isOpen ? 'open' : '') + '" onclick="toggleDrawer(\'' + esc(c.id) + '\')">' +
+    esc(btnLabel) + ' <span class="caret">' + (isOpen ? '▲' : '▼') + '</span>' +
+   '</button>';
+  }).join("") +
+ '</div>';
+
+ // Dropdown panel if open
+ if(openDrawer){
+  var actMeta = getCategoryMeta(openDrawer);
+  var subs = getCategorySubs(openDrawer);
+  var totalInCat = V.filter(function(x){ return x.cat === openDrawer; }).length;
+  var subLabel = (filterSub === 'all' || filterSub.startsWith('Tất cả')) 
+   ? ('Tất cả ' + totalInCat + ' từ') 
+   : (esc(filterSub) + ' (' + list.length + ' từ)');
+
+  h += '<div class="filter-drawer">' +
+   '<div class="drawer-title"><b>' + actMeta.icon + ' ' + esc(actMeta.name) + '</b><span>' + subLabel + '</span></div>' +
+   '<div class="drawer-grid">' +
+    subs.map(function(sub){
+     var isAllSub = sub.startsWith('Tất cả');
+     var count = isAllSub ? totalInCat : (
+      openDrawer === "comm" ? (sub === "Chào hỏi & Đại từ" ? 9 : 9) :
+      V.filter(function(x){ return x.cat === openDrawer && x.sub === sub; }).length
+     );
+     var isChipActive = filterCat === openDrawer && (filterSub === sub || (isAllSub && (filterSub === "all" || filterSub.startsWith("Tất cả"))));
+     return '<button class="drawer-chip ' + (isChipActive ? 'active' : '') + '" onclick="selectCatSub(\'' + esc(openDrawer) + '\', \'' + esc(sub) + '\')">' +
+      esc(sub) + ' (' + count + ')' +
+     '</button>';
+    }).join("") +
+   '</div>' +
+  '</div>';
+ }
+
+ // Grid of words
+ h+='<div class="grid">'+list.map(function(x){
+  var isCur=curWord&&x.h===curWord.h;
+  var xMeta=getCategoryMeta(x.cat);
+  var bCls=xMeta.badgeCls;
+  var bTxt=x.cat==="comm"?"Giao tiếp":(x.sub ? x.sub.replace(" & ","/") : xMeta.name);
+  return '<button class="w '+(isCur?"on":"")+'" onclick="selectWord(\''+esc(x.h)+'\')">'+
+   '<div class="w-badge-row"><span class="w-badge '+bCls+'">'+esc(bTxt)+'</span></div>'+
+   '<b>'+esc(x.h)+'</b>'+
+   '<div class="w-py">'+esc(x.p)+'</div>'+
+   '<div class="w-mean">'+esc(x.m)+'</div>'+
+  '</button>';
+ }).join("")+'</div>';
+
+ $("#app").innerHTML=h;
+}
+
+var si=0;
+var sentCat="all";
+var showSentPinyin=ld("zh_sent_py",true);
+
+function toggleSentPinyin(){
+ showSentPinyin=!showSentPinyin;
+ sv("zh_sent_py",showSentPinyin);
+ render();
+}
+
+function getFilteredSENT(){
+ return SENT.filter(function(s){
+  if(sentCat==="all")return true;
+  return s.cat===sentCat;
+ });
+}
+
+function getSentCategories(){
+ var cats=[
+  {id:"all",name:"Tất cả",icon:"📑",count:SENT.length},
+  {id:"comm",name:"Từ giao tiếp",icon:"🗣️",count:SENT.filter(function(x){return x.cat==="comm"}).length},
+  {id:"live",name:"Phòng livestream",icon:"🎙️",count:SENT.filter(function(x){return x.cat==="live"}).length}
+ ];
+ var seen={all:true,comm:true,live:true};
+ SENT.forEach(function(s){
+  if(s.cat&&!seen[s.cat]){
+   seen[s.cat]=true;
+   var meta=getCategoryMeta(s.cat);
+   cats.push({
+    id:s.cat,
+    name:meta.name,
+    icon:meta.icon,
+    count:SENT.filter(function(x){return x.cat===s.cat}).length
+   });
+  }
+ });
+ return cats;
+}
+
+function getSentencePyTokens(s){
+ if(s.pyTokens&&s.pyTokens.length===s.t.length)return s.pyTokens;
+ var syllables=s.py.trim().split(/\s+/);
+ var out=[];
+ var sylIdx=0;
+ s.t.forEach(function(tok){
+  var dictEntry=DICT[tok];
+  if(dictEntry&&dictEntry.p){
+   out.push(dictEntry.p);
+   sylIdx+=tok.length;
+  }else{
+   var len=tok.length;
+   var chunk=syllables.slice(sylIdx,sylIdx+len).join(" ");
+   out.push(chunk||tok);
+   sylIdx+=len;
+  }
+ });
+ return out;
+}
+
+function newSB(targetSentence){
+ var poolList=getFilteredSENT();
+ if(!poolList.length)poolList=SENT;
+ var s=targetSentence||poolList[si%poolList.length]||SENT[0];
+ var pyTokens=getSentencePyTokens(s);
+ SB={
+  s:s,
+  pool:shuf(s.t.map(function(x,i){
+   return {x:x,py:pyTokens[i]||"",i:i};
+  })),
+  ans:[],
+  res:null
+ };
+ updateAiContextBar();
+ updateAiQuickPills();
+}
+
+function nextSB(){
+ var poolList=getFilteredSENT();
+ if(!poolList.length)poolList=SENT;
+ si=(si+1)%poolList.length;
+ newSB(poolList[si]);
+ render();
+}
+
+function selectSentence(idx){
+ var poolList=getFilteredSENT();
+ if(!poolList.length)poolList=SENT;
+ var target=poolList[idx]||SENT[idx];
+ if(!target)return;
+ si=idx;
+ newSB(target);
+ speak(target.t.join(""));
+ render();
+ setTimeout(function(){
+  var hero=document.querySelector(".sent-sticky-hero");
+  if(hero){
+   hero.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+ },50);
+}
+
+function selectSentCategory(catId){
+ sentCat = catId;
+ openDropdown = null;
+ var pool = getFilteredSENT();
+ if(!pool.length) pool = SENT;
+ if(pool.length){
+  var inPool = pool.some(function(s){ return SB && SB.s && s.t.join("") === SB.s.t.join(""); });
+  if(!inPool){
+   newSB(pool[0]);
+  }
+ }
+ var meta = getCategoryMeta(catId);
+ toast("✔ Đã chọn danh mục: " + (meta.id === "all" ? "Tất cả" : meta.name) + " (" + pool.length + " câu)");
+ render();
+}
+
+function scrollToSentList(){
+ var el = document.querySelector(".sec-hd");
+ if(el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function rSent(){
+ if(!SB)newSB();
+ var s=SB.s;
+ var used=SB.ans.map(function(a){return a.i});
+ var poolList=getFilteredSENT();
+ if(!poolList.length)poolList=SENT;
+ var catMeta=getCategoryMeta(s.cat);
+ var sentCats=getSentCategories();
+
+ var sentCatDropdownHtml = '';
+ if(openDropdown === "sentCat"){
+  sentCatDropdownHtml = '<div class="dd-menu left-align" style="width:290px;max-width:calc(100vw - 32px)">' +
+   '<div class="dd-header" style="display:flex;justify-content:space-between;align-items:center">' +
+    '<span>Danh mục câu (' + SENT.length + ' câu)</span>' +
+    '<span style="font-weight:normal;color:var(--mute);font-size:11px">Chạm để chọn</span>' +
+   '</div>' +
+   '<div style="max-height:280px;overflow-y:auto">';
+  
+  sentCats.forEach(function(c){
+   var isSel = (sentCat === c.id);
+   var subs = [];
+   if(c.id !== "all"){
+    SENT.filter(function(x){ return x.cat === c.id; }).forEach(function(x){
+     if(x.sub && subs.indexOf(x.sub) < 0) subs.push(x.sub);
+    });
+   }
+   var subText = subs.length ? subs.join(" · ") : "Toàn bộ " + c.count + " mẫu câu";
+
+   sentCatDropdownHtml += '<div class="dd-item ' + (isSel ? 'selected' : '') + '" onclick="selectSentCategory(\'' + esc(c.id) + '\')">' +
+    '<div class="dd-check">' + (isSel ? '✔' : '') + '</div>' +
+    '<div style="flex:1;min-width:0">' +
+     '<div class="dd-title" style="display:flex;align-items:center;justify-content:space-between">' +
+      '<span style="font-weight:600">' + c.icon + ' ' + esc(c.name) + '</span>' +
+      '<span class="mute" style="font-size:11px;font-weight:normal">(' + c.count + ')</span>' +
+     '</div>' +
+     '<div class="dd-desc" style="font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(subText) + '</div>' +
+    '</div>' +
+   '</div>';
+  });
+
+  sentCatDropdownHtml += '</div>' +
+   '<div class="dd-item" style="background:var(--bg);padding:9px 14px;font-size:12px;color:var(--red);font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-top:1px solid var(--line)" onclick="openDropdown=null;render();setTimeout(scrollToSentList,50)">' +
+    '<span>Xem chi tiết danh sách bên dưới</span> <span>⬇</span>' +
+   '</div>' +
+  '</div>';
+ }
+
+ var h='<div class="card center sticky-hero sent-sticky-hero">'+
+  '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'+
+   '<div>'+
+    '<span class="tag '+catMeta.badgeCls+'" style="cursor:pointer" onclick="toggleDropdown(\'sentCat\', event)" title="Chạm để mở danh sách danh mục">'+catMeta.icon+' '+esc(catMeta.name)+' ▾</span>'+
+    (s.sub?'<span class="tag-sub">'+esc(s.sub)+'</span>':'')+
+   '</div>'+
+   '<button class="btn ghost sm" onclick="toggleSentPinyin()" style="padding:4px 10px;font-size:12px;border-radius:14px" title="Bật/tắt pinyin trên từng từ">'+
+    (showSentPinyin?'👁️ Ẩn Pinyin':'👁️ Hiện Pinyin')+
+   '</button>'+
+  '</div>'+
+  '<div class="mute" style="font-size:13px;margin-bottom:2px">Ghép các từ thành câu đúng theo nghĩa tiếng Việt:</div>'+
+  '<div class="mean" style="font-size:20px;font-weight:600;margin:4px 0 8px;color:var(--ink)">'+esc(s.vi)+'</div>'+
+  
+  '<div class="slot">'+
+   (SB.ans.length?SB.ans.map(function(a){
+    return '<button class="chip" onclick="sbDel('+a.i+')">'+
+     (showSentPinyin&&a.py?'<small class="chip-py">'+esc(a.py)+'</small>':'')+
+     '<b>'+esc(a.x)+'</b>'+
+    '</button>';
+   }).join(""): '<div class="mute" style="line-height:48px;font-size:13px">Chạm các từ bên dưới để đưa lên đây</div>')+
+  '</div>'+
+  
+  '<div style="min-height:48px;margin-bottom:8px">'+
+   SB.pool.filter(function(a){return used.indexOf(a.i)<0}).map(function(a){
+    return '<button class="chip" onclick="sbAdd('+a.i+')">'+
+     (showSentPinyin&&a.py?'<small class="chip-py">'+esc(a.py)+'</small>':'')+
+     '<b>'+esc(a.x)+'</b>'+
+    '</button>';
+   }).join("")+
+  '</div>'+
+  
+  (SB.res===null?'':(SB.res
+   ?'<div class="fb ok" style="margin:8px 0">✔ Chính xác! '+esc(s.py)+'</div>'
+   :'<div class="fb bad" style="margin:8px 0">✘ Chưa đúng, bạn hãy thử chạm từ để bỏ ra và sắp xếp lại nhé!</div>'))+
+  
+  '<div class="row" style="margin-top:6px;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">'+
+   '<div class="dd-wrap">'+
+    '<button class="btn ghost dd-btn '+(openDropdown==='sentCat'?'open':'')+'" onclick="toggleDropdown(\'sentCat\', event)" style="padding:7px 12px;font-size:13px;border-radius:12px" title="Xem danh mục dạng danh sách list">'+
+     '📂 Danh mục <span class="dd-arrow">▾</span>'+
+    '</button>'+
+    (openDropdown==='sentCat'?sentCatDropdownHtml:'')+
+   '</div>'+
+   '<button class="btn ghost" onclick="speak(\''+esc(s.t.join(""))+'\')">🔊 Nghe câu</button>'+
+   '<button class="btn" onclick="sbCheck()" '+(SB.ans.length?"":"disabled")+'>Kiểm tra</button>'+
+   '<button class="btn ghost" onclick="nextSB()">Câu khác ▶</button>'+
+  '</div>'+
+   '<div class="dd-controls-row" style="margin-top:10px">'+
+    getVoiceDropdownHtml()+
+    getSpeedDropdownHtml()+
+   '</div>'+
+ '</div>';
+
+ // Sentence catalog
+ h+='<div class="sec-hd" style="margin-top:20px"><h2>Mẫu câu luyện tập ('+poolList.length+' câu)</h2><span class="mute">Chạm câu để đưa lên ghép</span></div>';
+
+ h+='<div class="pills" style="margin-bottom:12px">';
+ sentCats.forEach(function(c){
+  var isSel=sentCat===c.id;
+  h+='<button class="pill '+(isSel?'on':'')+'" onclick="sentCat=\''+c.id+'\';render()">'+
+   c.icon+' '+esc(c.name)+' ('+c.count+')'+
+  '</button>';
+ });
+ h+='</div>';
+
+ // Group poolList by subcategory
+ var groups={};
+ poolList.forEach(function(s,idx){
+  var subName=s.sub||(s.cat==="comm"?"Giao tiếp chung":"Livestream chung");
+  if(!groups[subName])groups[subName]=[];
+  groups[subName].push({s:s,idx:idx});
+ });
+
+ Object.keys(groups).forEach(function(grpName){
+  var items=groups[grpName];
+  h+='<div style="margin:16px 0 8px;font-size:14px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px">'+
+   '<span style="color:var(--red)">📌</span> '+esc(grpName)+' <span class="mute" style="font-weight:normal;font-size:12px">('+items.length+' câu)</span>'+
+  '</div>';
+  
+  h+='<div style="display:flex;flex-direction:column;gap:8px">';
+  items.forEach(function(item){
+   var s=item.s;
+   var isCur=SB&&SB.s&&SB.s.t.join("")===s.t.join("");
+   var sText=s.t.join("");
+   
+   h+='<div class="card sent-card '+(isCur?'active':'')+'" onclick="selectSentence('+item.idx+')">'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px">'+
+     '<div style="flex:1;min-width:0;word-break:break-word">'+
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">'+
+       '<span style="font-size:19px;font-weight:600;font-family:\'Noto Sans SC\',sans-serif;color:var(--ink)">'+esc(sText)+'</span>'+
+       (isCur?'<span class="tag-status">✏️ Đang luyện</span>':'')+
+      '</div>'+
+      '<div class="py" style="font-size:14px;color:var(--red);font-weight:500;margin-bottom:2px">'+esc(s.py)+'</div>'+
+      '<div class="mute" style="font-size:13px">'+esc(s.vi)+'</div>'+
+     '</div>'+
+     '<div style="display:flex;gap:6px;align-items:center">'+
+      '<button class="btn ghost sm" onclick="event.stopPropagation();speak(\''+esc(sText)+'\')" title="Nghe phát âm">🔊</button>'+
+      '<button class="btn sm '+(isCur?'ghost':'')+'" onclick="event.stopPropagation();selectSentence('+item.idx+')">'+
+       (isCur?'Đang ghép':'Ghép câu ➔')+
+      '</button>'+
+     '</div>'+
+    '</div>'+
+   '</div>';
+  });
+  h+='</div>';
+ });
+
+ $("#app").innerHTML=h;
+}
+
+function sbAdd(i){SB.ans.push(SB.pool.filter(function(a){return a.i==i})[0]);SB.res=null;render()}
+function sbDel(i){SB.ans=SB.ans.filter(function(a){return a.i!=i});SB.res=null;render()}
+function sbCheck(){SB.res=SB.ans.map(function(a){return a.x}).join("")==SB.s.t.join("");if(SB.res){S.done++;sv("zh_stat",S);speak(SB.s.t.join(""))}render()}
+
+function rQuiz(){
+ if(!Q){
+  var allCats = getAllCategories();
+  $("#app").innerHTML='<div class="card center">'+
+   '<h2 style="margin-top:0">Kiểm tra từ vựng</h2>'+
+   '<div class="mute">Chọn phạm vi ôn tập và số lượng câu hỏi</div>'+
+   '<div style="margin:16px 0 6px;font-size:14px;font-weight:600">1. Chọn phần từ vựng:</div>'+
+   '<div class="row" style="margin-top:2px;flex-wrap:wrap;justify-content:center">'+
+    '<button class="pill '+(quizCat==="all"?"on":"")+'" onclick="quizCat=\'all\';render()">Tất cả ('+V.length+')</button>'+
+    allCats.map(function(c){
+     return '<button class="pill '+(quizCat===c.id?"on":"")+'" onclick="quizCat=\''+esc(c.id)+'\';render()">'+c.icon+' '+esc(c.name)+' ('+c.count+')</button>';
+    }).join("")+
+   '</div>'+
+   '<div style="margin:16px 0 6px;font-size:14px;font-weight:600">2. Chọn số câu:</div>'+
+   '<div class="row" style="margin-top:2px">'+
+    [5,10,15,20].map(function(n){return '<button class="btn" onclick="startQ('+n+')">'+n+' câu</button>'}).join("")+
+   '</div>'+
+  '</div>';
+  return;
+ }
+ if(Q.i>=Q.qs.length){
+  var pc=Math.round(Q.sc/Q.qs.length*100);
+  $("#app").innerHTML='<div class="card center"><div class="mute">Kết quả</div><div class="big">'+Q.sc+'/'+Q.qs.length+'</div><div>'+pc+'% · '+(pc>=80?"Rất tốt! 🎉":pc>=50?"Khá ổn, ôn thêm nhé":"Cần ôn lại từ vựng")+'</div><div class="row"><button class="btn" onclick="startQ(Q.qs.length)">Làm lại</button><button class="btn ghost" onclick="Q=null;render()">Chọn chủ đề / số câu khác</button></div></div>';
+  return;
+ }
+ var q=Q.qs[Q.i],h='<div class="bar"><i style="width:'+(Q.i/Q.qs.length*100)+'%"></i></div><div class="mute" style="margin-top:6px">Câu '+(Q.i+1)+'/'+Q.qs.length+'</div><div class="card">';
+ if(q.k=="mcq")h+='<div class="mute">Chọn nghĩa đúng</div><div class="center">'+ruby(q.w,"sm")+'</div>'+opts(q,"m");
+ if(q.k=="listen")h+='<div class="mute">Nghe và chọn chữ đúng</div><div class="center"><button class="btn" onclick="speak(Q.qs[Q.i].w.h)">🔊 Nghe</button></div>'+opts(q,"h");
+ if(q.k=="type")h+='<div class="mute">Tự luận: gõ chữ Hán hoặc pinyin (không cần dấu thanh) của</div><div class="mean center">'+esc(q.w.m)+'</div><input id="ti" autocomplete="off" placeholder="vd: xiexie hoặc 谢谢" '+(q.done?"disabled":"")+'>'+(q.done?'':'<div class="row"><button class="btn" onclick="chkT()">Trả lời</button></div>');
+ if(q.done)h+='<div class="fb '+(q.ok?"ok":"bad")+'">'+(q.ok?"✔ Đúng!":"✘ Đáp án: "+esc(q.w.h)+" · "+esc(q.w.p))+'</div><div class="row"><button class="btn" onclick="Q.i++;render()">'+(Q.i+1<Q.qs.length?"Câu tiếp ▶":"Xem kết quả")+'</button></div>';
+ $("#app").innerHTML=h+'</div>';
+ if(q.k=="listen"&&!q.played){q.played=1;setTimeout(function(){speak(q.w.h)},250)}
+}
+function opts(q,f){return q.o.map(function(o,i){var c="";if(q.done){if(o===q.w[f])c=" ok";else if(i===q.pick)c=" bad"}return '<button class="opt'+c+'" '+(q.done?"disabled":"")+' onclick="pickQ('+i+')">'+esc(o)+'</button>'}).join("")}
+function startQ(n){
+ var pool=V.filter(function(x){return quizCat==="all"||x.cat===quizCat});
+ if(!pool.length)pool=V;
+ var base=[];while(base.length<n)base=base.concat(shuf(pool));
+ base=base.slice(0,n);
+ var K=["mcq","listen","type","mcq"];
+ Q={i:0,sc:0,qs:base.map(function(w,i){
+  var k=K[i%4],q={w:w,k:k};
+  if(k!="type"){
+   var f=k=="mcq"?"m":"h";
+   var d=shuf(pool.filter(function(x){return x[f]!==w[f]})).slice(0,3).map(function(x){return x[f]});
+   while(d.length<3){
+    var extra=shuf(V.filter(function(x){return x[f]!==w[f]&&d.indexOf(x[f])<0}))[0];
+    if(extra)d.push(extra[f]);else break;
+   }
+   q.o=shuf(d.concat([w[f]]));
+  }
+  return q;
+ })};
+ render();
+}
+function fin(q,ok){q.done=1;q.ok=ok;if(ok)Q.sc++;S.done++;if(Q.i==Q.qs.length-1)S.best=Math.max(S.best,Math.round(Q.sc/Q.qs.length*100));sv("zh_stat",S);render()}
+function pickQ(i){var q=Q.qs[Q.i];if(q.done)return;q.pick=i;var f=q.k=="mcq"?"m":"h";fin(q,q.o[i]===q.w[f])}
+function chkT(){var q=Q.qs[Q.i],v=$("#ti").value.trim();if(!v)return;fin(q,v==q.w.h||norm(v)==norm(q.w.p))}
+
+function rGram(){
+ var commGr=GR.filter(function(x){return x.cat==="comm"});
+ var liveGr=GR.filter(function(x){return x.cat==="live"});
+ var h='<div class="sec-hd"><h2>🗣️ Ngữ pháp giao tiếp cơ bản</h2><span class="mute">'+commGr.length+' mẫu</span></div>'+
+  commGr.map(function(g){
+   return '<div class="card"><div class="pat">'+esc(g.p)+'</div><div class="mute">'+esc(g.d)+'</div><div class="li" style="border:0"><div><div style="font-size:22px">'+esc(g.ex)+'</div><div class="py" style="font-size:15px">'+esc(g.py)+'</div><div class="mute">'+esc(g.vi)+'</div></div><button class="btn ghost" onclick="speak(\''+esc(g.ex)+'\')">🔊</button></div></div>';
+  }).join("");
+
+ h+='<div class="sec-hd" style="margin-top:20px"><h2>🎙️ Mẫu câu & Ngữ pháp phòng livestream</h2><span class="mute">'+liveGr.length+' mẫu</span></div>'+
+  liveGr.map(function(g){
+   return '<div class="card"><div class="pat">'+esc(g.p)+'</div><div class="mute">'+esc(g.d)+'</div><div class="li" style="border:0"><div><div style="font-size:22px">'+esc(g.ex)+'</div><div class="py" style="font-size:15px">'+esc(g.py)+'</div><div class="mute">'+esc(g.vi)+'</div></div><button class="btn ghost" onclick="speak(\''+esc(g.ex)+'\')">🔊</button></div></div>';
+  }).join("");
+
+ $("#app").innerHTML=h;
+}
+
+function onCatSelectChange(){
+ var sel = $("#aCat");
+ if(!sel) return;
+ if(sel.value === "__new__"){
+  var newCat = prompt("Nhập tên danh mục mới (ví dụ: Hoa quả, Ẩm thực, Du lịch...):");
+  if(newCat && newCat.trim()){
+   var catName = newCat.trim();
+   registerCustomCat(catName);
+   render();
+   setTimeout(function(){
+    if($("#aCat")) $("#aCat").value = normalizeCat(catName);
+   }, 50);
+  } else {
+   sel.value = "live";
+  }
+ }
+}
+
+function rWords(){
+ var allCats = getAllCategories();
+ var list = V.filter(function(w){ return wordsCat==="all" || w.cat===wordsCat; });
+
+ var catOptions = allCats.map(function(c){
+  return '<option value="' + esc(c.id) + '">' + c.icon + ' ' + esc(c.name) + '</option>';
+ }).join("") + '<option value="__new__">➕ Tạo danh mục mới...</option>';
+
+ var h='<div class="card">'+
+  '<h2 style="margin-top:0">Thêm từ mới</h2>'+
+  '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">'+
+   '<select id="aCat" onchange="onCatSelectChange()">' + catOptions + '</select>'+
+   '<input id="aSub" placeholder="Phân nhóm con (vd: Thiết bị, Bán hàng, Chào hỏi...)">'+
+  '</div>'+
+  '<input id="a1" placeholder="Chữ Hán, vd: 麦克风"><div style="height:8px"></div>'+
+  '<input id="a2" placeholder="Pinyin tách từng chữ, vd: màikèfēng"><div style="height:8px"></div>'+
+  '<input id="a3" placeholder="Nghĩa, vd: micro">'+
+  '<div class="row"><button class="btn" onclick="addW()">Thêm từ</button></div>'+
+ '</div>';
+
+ h+='<div class="card">'+
+  '<h2 style="margin-top:0">Nhập hàng loạt</h2>'+
+  '<div class="mute">Mỗi dòng: chữ Hán|pinyin|nghĩa|phân loại (comm/live/Hoa quả...)|nhóm con</div>'+
+  '<textarea id="bulk" rows="3" placeholder="打光|dǎguāng|đánh sáng|live|Thiết bị & Phòng live"></textarea>'+
+  '<div class="row">'+
+   '<button class="btn" onclick="bulkW()">Nhập</button>'+
+   '<button class="btn ghost" onclick="if(confirm(\'Khôi phục 153 từ gốc chuẩn phân loại?\')){V=MASTER_VOCAB.map(function(x){return Object.assign({},x)});sv(\'zh_vocab\',V);curWord=V[0];render();toast(\'Đã khôi phục 153 từ chuẩn!\')}">Khôi phục 153 từ mẫu</button>'+
+  '</div>'+
+ '</div>';
+
+ h+='<div class="sec-hd"><h2>Danh sách từ ('+list.length+')</h2><span class="mute">Tổng: '+V.length+'</span></div>'+
+  '<div class="pills">'+
+   '<button class="pill '+(wordsCat==="all"?"on":"")+'" onclick="wordsCat=\'all\';render()">Tất cả ('+V.length+')</button>'+
+   allCats.map(function(c){
+    return '<button class="pill '+(wordsCat===c.id?"on":"")+'" onclick="wordsCat=\''+esc(c.id)+'\';render()">'+c.icon+' '+esc(c.name)+' ('+c.count+')</button>';
+   }).join("")+
+  '</div>'+
+  '<div class="card" style="padding:4px 16px">'+
+  list.map(function(w){
+   var realIdx=V.findIndex(function(x){return x.h===w.h});
+   var meta=getCategoryMeta(w.cat);
+   var bCls=meta.badgeCls;
+   var bTxt=w.cat==="comm"?"Giao tiếp":(w.cat==="live"?("Live · "+w.sub):(meta.name + (w.sub && w.sub !== "Chung" ? " · " + w.sub : "")));
+   return '<div class="li">'+
+    '<div style="cursor:pointer;flex:1;min-width:0;word-break:break-word" onclick="speak(\''+esc(w.h)+'\')" title="Chạm để nghe">'+
+     '<div><b style="font-size:20px">'+esc(w.h)+'</b> <span class="tag '+bCls+'" style="margin-left:6px">'+esc(bTxt)+'</span></div>'+
+     '<div class="py" style="font-size:14px">'+esc(w.p)+'</div>'+
+     '<div class="mute">'+esc(w.m)+'</div>'+
+    '</div>'+
+    '<div style="display:flex;gap:6px;align-items:center">'+
+     '<button class="btn ghost" style="padding:6px 10px;font-size:14px" onclick="speak(\''+esc(w.h)+'\')" title="Nghe phát âm">🔊</button>'+
+     '<button class="del" onclick="delW('+realIdx+')" aria-label="Xóa">✕</button>'+
+    '</div>'+
+   '</div>';
+  }).join("")+
+ '</div>';
+
+ $("#app").innerHTML=h;
+}
+
+function addW(){
+ var cat=$("#aCat").value;
+ if(cat === "__new__") cat = "live";
+ var sub=$("#aSub").value.trim()||(cat==="comm"?"Giao tiếp":(cat==="live"?"Phòng live":"Chung"));
+ var h=$("#a1").value.trim(),p=$("#a2").value.trim(),m=$("#a3").value.trim();
+ if(!h||!p||!m){toast("Điền đủ chữ Hán, pinyin và nghĩa");return}
+ registerCustomCat(cat);
+ var item={h:h,p:p,m:m,cat:cat,sub:sub};
+ V.push(item);sv("zh_vocab",V);curWord=item;render();toast("Đã thêm từ: "+h);
+}
+
+function bulkW(){
+ var n=0;
+ $("#bulk").value.split("\n").forEach(function(l){
+  var a=l.split("|").map(function(x){return x.trim()});
+  if(a.length>=3&&a[0]&&a[1]&&a[2]){
+   var rawCat = a[3] || "comm";
+   var cat = normalizeCat(rawCat);
+   var sub = a[4] || (cat==="comm"?"Giao tiếp":(cat==="live"?"Phòng live":"Chung"));
+   registerCustomCat(cat);
+   V.push({h:a[0],p:a[1],m:a[2],cat:cat,sub:sub});
+   n++;
+  }
+ });
+ sv("zh_vocab",V);render();toast("Đã thêm "+n+" từ mới");
+}
+
+function delW(i){
+ if(V.length<=4){toast("Cần giữ tối thiểu 4 từ để tạo bài kiểm tra");return}
+ V.splice(i,1);sv("zh_vocab",V);
+ if(!V.some(function(w){return curWord&&w.h===curWord.h}))curWord=V[0];
+ render();
+}
+
+// --- AI Chatbot Integration (Gemini & ChatGPT) ---
+var aiProvider = localStorage.getItem("ai_provider") || "gemini";
+var aiHistory = [];
+var aiLoading = false;
+
+var SALT = "ZhongwenLive2026_SecureKey_#88";
+function encKey(str){
+ if(!str) return "";
+ try {
+  var out = [];
+  for(var i = 0; i < str.length; i++){
+   var c = str.charCodeAt(i) ^ SALT.charCodeAt(i % SALT.length);
+   out.push(String.fromCharCode(c));
+  }
+  return btoa(encodeURIComponent(out.join("")));
+ } catch(e){
+  return btoa(str);
+ }
+}
+
+function decKey(enc){
+ if(!enc) return "";
+ try {
+  var raw = decodeURIComponent(atob(enc));
+  var out = [];
+  for(var i = 0; i < raw.length; i++){
+   var c = raw.charCodeAt(i) ^ SALT.charCodeAt(i % SALT.length);
+   out.push(String.fromCharCode(c));
+  }
+  return out.join("");
+ } catch(e){
+  try { return atob(enc); } catch(err){ return enc; }
+ }
+}
+
+function getApiKey(provider){
+ var p = provider || aiProvider;
+ var enc = localStorage.getItem(p === "gemini" ? "ai_gemini_key_enc" : "ai_openai_key_enc");
+ if(!enc){
+  var raw = localStorage.getItem(p === "gemini" ? "ai_gemini_key" : "ai_openai_key");
+  if(raw){
+   localStorage.setItem(p === "gemini" ? "ai_gemini_key_enc" : "ai_openai_key_enc", encKey(raw));
+   localStorage.removeItem(p === "gemini" ? "ai_gemini_key" : "ai_openai_key");
+   return raw;
+  }
+  return "";
+ }
+ return decKey(enc);
+}
+
+var AI_SYSTEM_PROMPT = 
+"Bạn là Trợ lý AI gia sư tiếng Trung thông minh, chuyên nghiệp và thân thiện.\n" +
+"Nguyên tắc và phản xạ ngữ cảnh:\n" +
+"1. NẮM BẮT NGỮ CẢNH CỦA NGƯỜI DÙNG: Luôn đọc kỹ phần [THÔNG TIN VỊ TRÍ HIỆN TẠI CỦA NGƯỜI DÙNG] ở cuối hướng dẫn này.\n" +
+"   - Nếu người dùng đang ở phần GHÉP CÂU (tab: sent): Khi người dùng hỏi về từ ghép, cấu trúc câu, ngữ pháp, nghĩa của câu, hãy giải thích cặn kẽ dựa trên chính câu người dùng đang ghép trên màn hình. Khi người dùng xin câu ghép để luyện tập hoặc gợi ý câu, hãy cung cấp các câu ghép hay trong khối mã ```sent.\n" +
+"   - Nếu người dùng đang ở phần HỌC TỪ VỰNG (tab: learn): Tập trung giải thích từ đang xem, đặt câu ví dụ, hoặc gợi ý thêm từ cùng chủ đề trong khối mã ```vocab.\n" +
+"   - Nếu người dùng đang ở các phần khác (quiz, gram, words): Giải thích đúng trọng tâm của phần đó.\n" +
+"2. ĐỊNH DẠNG KHỐI TỪ VỰNG: Bất cứ khi nào gợi ý hoặc nhắc đến từ vựng mới, bạn BẮT BUỘC cung cấp danh sách từ vựng trong khối mã ```vocab để người dùng bấm nút thêm thẳng vào ứng dụng:\n" +
+"```vocab\n" +
+"Chữ Hán|pinyin tách âm từng chữ|nghĩa tiếng Việt|Tên danh mục|Nhóm con\n" +
+"```\n" +
+"3. ĐỊNH DẠNG KHỐI GỢI Ý GHÉP CÂU: Bất cứ khi nào bạn gợi ý câu ghép hoặc người dùng hỏi câu luyện ghép câu, bạn BẮT BUỘC cung cấp danh sách câu trong khối mã ```sent để người dùng bấm nút thêm thẳng vào phần Ghép câu:\n" +
+"```sent\n" +
+"Từ 1/Từ 2/Từ 3|pinyin cả câu|nghĩa tiếng Việt|Tên danh mục|Nhóm con\n" +
+"```\n" +
+"Ví dụ:\n" +
+"```sent\n" +
+"西瓜/很/甜|xīguā hěn tián|Dưa hấu rất ngọt|Hoa quả|Mua sắm hoa quả\n" +
+"我/想/买/两斤/苹果|wǒ xiǎng mǎi liǎngjīn píngguǒ|Tôi muốn mua hai cân táo|Hoa quả|Mua sắm hoa quả\n" +
+"```\n" +
+"(Lưu ý: Các từ cấu thành câu phân tách bằng dấu gạch xéo `/` để ứng dụng biết cách chia thành các mảnh ghép cho trò chơi ghép câu).\n" +
+"4. TỰ ĐỘNG PHÂN LOẠI HOẶC TẠO DANH MỤC MỚI:\n" +
+"- Nếu là từ/câu giao tiếp hằng ngày: danh mục `comm` (hoặc `Từ giao tiếp`).\n" +
+"- Nếu là từ/câu phòng livestream: danh mục `live` (hoặc `Phòng livestream`).\n" +
+"- Nếu là chủ đề mới (hoa quả, ẩm thực, du lịch, động vật, thời trang, thể thao...): Hãy ĐẶT TÊN DANH MỤC MỚI tương ứng (ví dụ: `Hoa quả`, `Ẩm thực`, `Du lịch`...) và nhóm con cụ thể. Ứng dụng sẽ tự động sinh danh mục mới này trên giao diện!\n" +
+"- Ở cuối câu trả lời khi gợi ý từ hoặc câu mới, hãy hỏi người dùng xem họ muốn lưu vào danh mục nào hoặc muốn tạo danh mục mới khác / gộp vào danh mục nào có sẵn.\n" +
+"5. GIẢI THÍCH NGẮN GỌN, DỄ HIỂU, kèm phiên âm pinyin có dấu thanh và tiếng Việt chuẩn.";
+
+var AI_DEFAULT_PASS = atob("bmdvY3NvbjI4MDE5NEA=");
+
+function isAiUnlocked(){
+ if(sessionStorage.getItem("zh_ai_unlocked") === "1") return true;
+ if(localStorage.getItem("zh_ai_remember_unlock") === "1") return true;
+ return false;
+}
+
+function updateAiFabStatus(){
+ var fabLock = $("#aiFabLock");
+ if(fabLock){
+  fabLock.style.display = isAiUnlocked() ? "none" : "inline";
+ }
+}
+
+function applyAiLockState(unlocked){
+ var lockScreen = $("#aiLockScreen");
+ var contextBar = $("#aiContextBar");
+ var settings = $("#aiSettings");
+ var messages = $("#aiMessages");
+ var quickPills = $("#aiQuickPills");
+ var inputBar = document.querySelector(".ai-input-box");
+ var modelBadge = $("#aiModelBadge");
+ var lockBtn = $("#aiLockBtn");
+ var settingsBtn = $("#aiSettingsBtn");
+ var clearBtn = $("#aiClearBtn");
+ var fabLock = $("#aiFabLock");
+
+ if(unlocked){
+  if(lockScreen) lockScreen.style.display = "none";
+  if(contextBar) contextBar.style.display = "block";
+  if(messages) messages.style.display = "block";
+  if(quickPills) quickPills.style.display = "flex";
+  if(inputBar) inputBar.style.display = "flex";
+  if(modelBadge){ modelBadge.style.display = "inline-block"; updateAiModelBadge(); }
+  if(lockBtn) lockBtn.style.display = "inline-block";
+  if(settingsBtn) settingsBtn.style.display = "inline-block";
+  if(clearBtn) clearBtn.style.display = "inline-block";
+  if(fabLock) fabLock.style.display = "none";
+ } else {
+  if(lockScreen) lockScreen.style.display = "flex";
+  if(contextBar) contextBar.style.display = "none";
+  if(settings) settings.style.display = "none";
+  if(messages) messages.style.display = "none";
+  if(quickPills) quickPills.style.display = "none";
+  if(inputBar) inputBar.style.display = "none";
+  if(modelBadge){
+   modelBadge.className = "tag tag-custom";
+   modelBadge.textContent = "🔒 Đã khóa";
+   modelBadge.style.display = "inline-block";
+  }
+  if(lockBtn) lockBtn.style.display = "none";
+  if(settingsBtn) settingsBtn.style.display = "none";
+  if(clearBtn) clearBtn.style.display = "none";
+  if(fabLock) fabLock.style.display = "inline";
+ }
+}
+
+function unlockAi(){
+ var inp = $("#aiPassInput");
+ var err = $("#aiPassError");
+ if(!inp) return;
+ var val = inp.value.trim();
+ var savedPass = localStorage.getItem("zh_ai_pass") || AI_DEFAULT_PASS;
+ if(val === savedPass){
+  if(err) err.style.display = "none";
+  inp.value = "";
+  sessionStorage.setItem("zh_ai_unlocked", "1");
+  var remember = $("#aiRememberUnlock");
+  if(remember && remember.checked){
+   localStorage.setItem("zh_ai_remember_unlock", "1");
+  } else {
+   localStorage.removeItem("zh_ai_remember_unlock");
+  }
+  applyAiLockState(true);
+  toast("🔓 Mở khóa Trợ lý AI thành công!");
+  updateAiContextBar();
+  updateAiQuickPills();
+  if(!$("#aiMessages").children.length){
+   renderAiWelcome();
+  }
+  setTimeout(function(){ $("#aiInput") && $("#aiInput").focus(); }, 150);
+ } else {
+  if(err){
+   err.textContent = "❌ Mật khẩu không chính xác. Vui lòng thử lại!";
+   err.style.display = "block";
+  }
+  inp.classList.add("shake-anim");
+  setTimeout(function(){ inp.classList.remove("shake-anim"); }, 400);
+  inp.focus();
+ }
+}
+
+function lockAi(){
+ sessionStorage.removeItem("zh_ai_unlocked");
+ localStorage.removeItem("zh_ai_remember_unlock");
+ applyAiLockState(false);
+ toast("🔒 Đã khóa Trợ lý AI.");
+ setTimeout(function(){
+  var inp = $("#aiPassInput");
+  if(inp){ inp.value = ""; inp.focus(); }
+ }, 100);
+}
+
+function togglePassVisibility(inputId, btn){
+ var el = typeof inputId === "string" ? document.getElementById(inputId) : inputId;
+ if(!el) return;
+ if(el.type === "password"){
+  el.type = "text";
+  if(btn) btn.textContent = "🙈";
+ } else {
+  el.type = "password";
+  if(btn) btn.textContent = "👁️";
+ }
+}
+
+function toggleAi(){
+ var p = $("#aiPanel");
+ var isOpen = p.style.display === "flex";
+ if(isOpen){
+  p.style.display = "none";
+ } else {
+  p.style.display = "flex";
+  if(!isAiUnlocked()){
+   applyAiLockState(false);
+   setTimeout(function(){
+    var inp = $("#aiPassInput");
+    if(inp){ inp.focus(); }
+   }, 150);
+  } else {
+   applyAiLockState(true);
+   updateAiModelBadge();
+   updateAiContextBar();
+   updateAiQuickPills();
+   if(!$("#aiMessages").children.length){
+    renderAiWelcome();
+   }
+   setTimeout(function(){ $("#aiInput") && $("#aiInput").focus(); }, 150);
+  }
+ }
+}
+
+function updateAiModelBadge(){
+ var badge = $("#aiModelBadge");
+ if(!badge) return;
+ if(aiProvider === "gemini"){
+  var m = localStorage.getItem("ai_gemini_model");
+  if(!m || m.includes("1.5") || m.includes("2.0") || m.includes("2.5")){
+   m = "gemini-3.5-flash-lite";
+   localStorage.setItem("ai_gemini_model", m);
+  }
+  var shortName = m.replace("gemini-", "").replace("-flash", "");
+  badge.textContent = "Gemini " + shortName;
+  badge.className = "tag tag-comm";
+ } else {
+  badge.textContent = "ChatGPT";
+  badge.className = "tag tag-live";
+ }
+}
+
+function toggleAiSettings(){
+ if(!isAiUnlocked()){
+  applyAiLockState(false);
+  return;
+ }
+ var s = $("#aiSettings");
+ var isOpen = s.style.display === "block";
+ if(isOpen){
+  s.style.display = "none";
+ } else {
+  s.style.display = "block";
+  $("#aiProviderSelect").value = aiProvider;
+  if($("#aiCustomPassInput")) $("#aiCustomPassInput").value = "";
+  onAiProviderChange();
+ }
+}
+
+function onAiProviderChange(){
+ var sel = $("#aiProviderSelect").value;
+ var keyInput = $("#aiApiKeyInput");
+ var help = $("#aiKeyHelp");
+ var statusBox = $("#aiKeyStatus");
+ var geminiWrap = $("#aiGeminiModelWrap");
+ 
+ if(geminiWrap){
+  geminiWrap.style.display = sel === "gemini" ? "block" : "none";
+  if(sel === "gemini"){
+   var savedModel = localStorage.getItem("ai_gemini_model");
+   if(!savedModel || savedModel.includes("1.5") || savedModel.includes("2.0") || savedModel.includes("2.5")){
+    savedModel = "gemini-3.5-flash-lite";
+    localStorage.setItem("ai_gemini_model", savedModel);
+   }
+   $("#aiGeminiModelSelect").value = savedModel;
+  }
+ }
+ 
+ keyInput.value = "";
+
+ var hasKey = !!getApiKey(sel);
+ if(hasKey){
+  keyInput.placeholder = "🔒 Đã lưu key an toàn. Nhập key mới nếu muốn đổi...";
+  statusBox.innerHTML = 
+   '<div style="display:flex;align-items:center;justify-content:space-between;background:var(--okbg);color:var(--ok);padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600">' +
+    '<span>🟢 Đã lưu API Key an toàn (Mã hóa)</span>' +
+    '<button class="del" style="font-size:12px;color:var(--bad);cursor:pointer;padding:0 4px" onclick="deleteCurrentApiKey()" title="Xóa API key này">✕ Xóa key</button>' +
+   '</div>';
+ } else {
+  keyInput.placeholder = sel === "gemini" ? "Dán Gemini API Key (AI Studio)..." : "Dán OpenAI API Key (sk-...)...";
+  statusBox.innerHTML = 
+   '<div style="background:var(--redbg);color:var(--bad);padding:6px 10px;border-radius:8px;font-size:12px">' +
+    '⚠️ Chưa có API Key cho dịch vụ này' +
+   '</div>';
+ }
+
+ if(sel === "gemini"){
+  help.innerHTML = 'Lấy API key Google Gemini hoàn toàn miễn phí tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">Google AI Studio ↗</a>';
+ } else {
+  help.innerHTML = 'Lấy API key OpenAI tại: <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">OpenAI Platform ↗</a>';
+ }
+}
+
+function saveAiSettings(){
+ var sel = $("#aiProviderSelect").value;
+ var val = $("#aiApiKeyInput").value.trim();
+ var newPassInp = $("#aiCustomPassInput");
+ aiProvider = sel;
+ localStorage.setItem("ai_provider", aiProvider);
+ 
+ if(sel === "gemini" && $("#aiGeminiModelSelect")){
+  localStorage.setItem("ai_gemini_model", $("#aiGeminiModelSelect").value);
+ }
+
+ if(newPassInp && newPassInp.value.trim()){
+  localStorage.setItem("zh_ai_pass", newPassInp.value.trim());
+ }
+ 
+ if(val){
+  localStorage.setItem(sel === "gemini" ? "ai_gemini_key_enc" : "ai_openai_key_enc", encKey(val));
+  localStorage.removeItem(sel === "gemini" ? "ai_gemini_key" : "ai_openai_key");
+  toast("Đã mã hóa và lưu API Key thành công!");
+ } else if(getApiKey(sel)){
+  toast("Đã lưu cài đặt AI!");
+ } else {
+  toast("Chưa nhập API Key");
+ }
+
+ $("#aiApiKeyInput").value = "";
+ updateAiModelBadge();
+ $("#aiSettings").style.display = "none";
+}
+
+function deleteCurrentApiKey(){
+ var sel = $("#aiProviderSelect").value;
+ localStorage.removeItem(sel === "gemini" ? "ai_gemini_key_enc" : "ai_openai_key_enc");
+ localStorage.removeItem(sel === "gemini" ? "ai_gemini_key" : "ai_openai_key");
+ onAiProviderChange();
+ toast("Đã xóa API Key của " + (sel === "gemini" ? "Gemini" : "OpenAI"));
+}
+
+function clearAiChat(){
+ aiHistory = [];
+ $("#aiMessages").innerHTML = "";
+ renderAiWelcome();
+ toast("Đã xóa cuộc trò chuyện");
+}
+
+function renderAiWelcome(){
+ var msgHtml = 
+  '<div class="ai-msg bot">' +
+   '<div class="ai-bubble">' +
+    '👋 <b>Xin chào! Tôi là Trợ lý AI Tiếng Trung.</b><br>' +
+    'Bạn có thể hỏi tôi về từ vựng, ngữ pháp, kịch bản chốt đơn phòng live, hoặc yêu cầu gợi ý từ mới.<br><br>' +
+    '✨ <i>Đặc biệt: Khi tôi gợi ý từ mới, bạn có thể nhấn nút <b>➕ Thêm</b> để tự động lưu vào bộ từ vựng ngay lập tức!</i>' +
+   '</div>' +
+  '</div>';
+ $("#aiMessages").innerHTML = msgHtml;
+}
+
+function askQuickAi(txt){
+ $("#aiInput").value = txt;
+ sendAiMsg();
+}
+
+function handleAiKey(e){
+ if(e.key === "Enter" && !e.shiftKey){
+  e.preventDefault();
+  sendAiMsg();
+ }
+}
+
+function formatAiText(raw){
+ var vocabBlocks = [];
+ var parsed = raw.replace(/```vocab([\s\S]*?)```/g, function(m, content){
+  var lines = content.trim().split("\n");
+  var list = [];
+  lines.forEach(function(l){
+   var p = l.split("|").map(function(x){return x.trim()});
+   if(p.length >= 3 && p[0] && p[1] && p[2]){
+    var rawCat = p[3] || "comm";
+    var catId = normalizeCat(rawCat);
+    var sub = p[4] || "Chung";
+    list.push({
+     h: p[0],
+     p: p[1],
+     m: p[2],
+     cat: catId,
+     sub: sub
+    });
+   }
+  });
+  if(list.length){
+   vocabBlocks.push(list);
+   return "{{VOCAB_BLOCK_" + (vocabBlocks.length - 1) + "}}";
+  }
+  return "";
+ });
+
+ var sentBlocks = [];
+ parsed = parsed.replace(/```sent([\s\S]*?)```/g, function(m, content){
+  var lines = content.trim().split("\n");
+  var list = [];
+  lines.forEach(function(l){
+   var p = l.split("|").map(function(x){return x.trim()});
+   if(p.length >= 3 && p[0] && p[1] && p[2]){
+    var rawTokens = p[0];
+    var py = p[1];
+    var vi = p[2];
+    var rawCat = p[3] || (view === "sent" && SB && SB.s ? SB.s.cat : "comm");
+    var catId = normalizeCat(rawCat);
+    var sub = p[4] || (view === "sent" && SB && SB.s ? SB.s.sub : "Mẫu câu mới");
+
+    var tokens = [];
+    if(rawTokens.indexOf("/") >= 0){
+     tokens = rawTokens.split("/").map(function(x){return x.trim()}).filter(Boolean);
+    } else if(rawTokens.indexOf(",") >= 0){
+     tokens = rawTokens.split(",").map(function(x){return x.trim()}).filter(Boolean);
+    } else if(rawTokens.indexOf(" ") >= 0){
+     tokens = rawTokens.split(/\s+/).filter(Boolean);
+    } else {
+     tokens = rawTokens.split("");
+    }
+
+    var pyTokens = [];
+    if(py.indexOf("/") >= 0){
+     pyTokens = py.split("/").map(function(x){return x.trim()}).filter(Boolean);
+    }
+    if(pyTokens.length !== tokens.length){
+     pyTokens = getSentencePyTokens({ t: tokens, py: py });
+    }
+
+    list.push({
+     t: tokens,
+     py: py.replace(/\//g, " "),
+     pyTokens: pyTokens,
+     vi: vi,
+     cat: catId,
+     sub: sub
+    });
+   }
+  });
+  if(list.length){
+   sentBlocks.push(list);
+   return "{{SENT_BLOCK_" + (sentBlocks.length - 1) + "}}";
+  }
+  return "";
+ });
+
+ // Format basic markdown
+ parsed = esc(parsed);
+ parsed = parsed.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+ parsed = parsed.replace(/\n/g, "<br>");
+
+ // Replace vocab block placeholders with interactive cards
+ vocabBlocks.forEach(function(list, idx){
+  var defaultCat = list[0] ? list[0].cat : "live";
+  var allCats = getAllCategories();
+  var catOptions = allCats.map(function(c){
+   return '<option value="' + esc(c.id) + '"' + (c.id === defaultCat ? ' selected' : '') + '>' + c.icon + ' ' + esc(c.name) + '</option>';
+  }).join("");
+  if(!allCats.some(function(c){ return c.id === defaultCat; })){
+   var defMeta = getCategoryMeta(defaultCat);
+   catOptions = '<option value="' + esc(defaultCat) + '" selected>' + defMeta.icon + ' ' + esc(defMeta.name) + '</option>' + catOptions;
+  }
+  catOptions += '<option value="__new__">➕ Tạo danh mục mới khác...</option>';
+
+  var blockHtml = '<div class="ai-vocab-box" data-target-cat="' + esc(defaultCat) + '">';
+  
+  blockHtml += '<div class="ai-cat-bar">' +
+   '<span style="font-weight:600;color:var(--ink)">📁 Lưu vào:</span>' +
+   '<select class="ai-cat-select" onchange="onAiBlockCatChange(this, ' + idx + ')">' + catOptions + '</select>' +
+  '</div>';
+
+  if(list.length > 1){
+   var jsonAttr = esc(JSON.stringify(list));
+   blockHtml += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">' +
+    '<span style="font-size:12px;font-weight:600;color:var(--red)">📝 ' + list.length + ' từ mới được gợi ý:</span>' +
+    '<button class="btn ai-btn-sm" onclick=\'addAllVocabFromAi(' + jsonAttr + ', this)\'>➕ Thêm tất cả vào app</button>' +
+   '</div>';
+  }
+  list.forEach(function(item){
+   var exists = V.some(function(w){ return w.h === item.h; });
+   var meta = getCategoryMeta(item.cat);
+   var badgeCls = meta.badgeCls;
+   var badgeTxt = meta.icon + " " + meta.name + (item.sub && item.sub !== "Chung" ? " · " + item.sub : "");
+   blockHtml += '<div class="ai-vcard">' +
+    '<div class="ai-vcard-info">' +
+     '<div class="ai-vcard-top">' +
+      '<b>' + esc(item.h) + '</b>' +
+      '<span class="tag ' + badgeCls + '">' + esc(badgeTxt) + '</span>' +
+     '</div>' +
+     '<div class="ai-vcard-py">' + esc(item.p) + '</div>' +
+     '<div class="ai-vcard-m">' + esc(item.m) + '</div>' +
+    '</div>' +
+    '<div class="ai-vcard-actions">' +
+     '<button class="btn ghost ai-btn-sm" onclick="speak(\'' + esc(item.h) + '\')" title="Nghe phát âm">🔊</button>' +
+     (exists ? '<span class="ai-added-tag">✔ Đã có</span>' : '<button class="btn ai-btn-sm" onclick="addVocabFromAi(\'' + esc(item.h) + '\',\'' + esc(item.p) + '\',\'' + esc(item.m) + '\',\'' + esc(item.cat) + '\',\'' + esc(item.sub) + '\', this)">➕ Thêm</button>') +
+    '</div>' +
+   '</div>';
+  });
+  blockHtml += '</div>';
+  parsed = parsed.replace("{{VOCAB_BLOCK_" + idx + "}}", blockHtml);
+ });
+
+ // Replace sentence block placeholders with interactive cards
+ sentBlocks.forEach(function(list, idx){
+  var defaultCat = list[0] ? list[0].cat : (view === "sent" && SB && SB.s ? SB.s.cat : "comm");
+  var allCats = getAllCategories();
+  var catOptions = allCats.map(function(c){
+   return '<option value="' + esc(c.id) + '"' + (c.id === defaultCat ? ' selected' : '') + '>' + c.icon + ' ' + esc(c.name) + '</option>';
+  }).join("");
+  if(!allCats.some(function(c){ return c.id === defaultCat; })){
+   var defMeta = getCategoryMeta(defaultCat);
+   catOptions = '<option value="' + esc(defaultCat) + '" selected>' + defMeta.icon + ' ' + esc(defMeta.name) + '</option>' + catOptions;
+  }
+  catOptions += '<option value="__new__">➕ Tạo danh mục mới khác...</option>';
+
+  var blockHtml = '<div class="ai-sent-box" data-target-cat="' + esc(defaultCat) + '">';
+  
+  blockHtml += '<div class="ai-cat-bar">' +
+   '<span style="font-weight:600;color:var(--ink)">📁 Lưu vào phần Ghép câu:</span>' +
+   '<select class="ai-cat-select" onchange="onAiSentBlockCatChange(this, ' + idx + ')">' + catOptions + '</select>' +
+  '</div>';
+
+  if(list.length > 1){
+   var jsonAttr = esc(JSON.stringify(list));
+   blockHtml += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">' +
+    '<span style="font-size:12px;font-weight:600;color:var(--red)">🧩 ' + list.length + ' câu ghép được gợi ý:</span>' +
+    '<button class="btn ai-btn-sm" onclick=\'addAllSentencesFromAi(' + jsonAttr + ', this)\'>➕ Thêm tất cả vào Ghép câu</button>' +
+   '</div>';
+  }
+
+  list.forEach(function(item){
+   var sText = item.t.join("");
+   var exists = SENT.some(function(s){ return s.t.join("") === sText; });
+   var meta = getCategoryMeta(item.cat);
+   var badgeCls = meta.badgeCls;
+   var badgeTxt = meta.icon + " " + meta.name + (item.sub && item.sub !== "Chung" ? " · " + item.sub : "");
+   var itemJson = esc(JSON.stringify(item));
+
+   blockHtml += '<div class="ai-scard">' +
+    '<div class="ai-scard-top">' +
+     '<span class="ai-scard-hz">' + esc(sText) + '</span>' +
+     '<span class="tag ' + badgeCls + '">' + esc(badgeTxt) + '</span>' +
+    '</div>' +
+    '<div class="ai-scard-tokens">' +
+     item.t.map(function(tok, ti){
+      var tpy = item.pyTokens && item.pyTokens[ti] ? item.pyTokens[ti] : "";
+      return '<span class="ai-tok-pill" title="' + esc(tpy) + '">' + esc(tok) + '</span>';
+     }).join("") +
+    '</div>' +
+    '<div class="ai-scard-py">' + esc(item.py) + '</div>' +
+    '<div class="ai-scard-vi">' + esc(item.vi) + '</div>' +
+    '<div class="ai-scard-foot">' +
+     '<button class="btn ghost ai-btn-sm" onclick="speak(\'' + esc(sText) + '\')" title="Nghe phát âm">🔊 Nghe</button>' +
+     '<div class="ai-scard-btns">' +
+      (exists 
+       ? '<span class="ai-added-tag">✔ Đã có</span>' 
+       : '<button class="btn ai-btn-sm" onclick=\'addSentenceFromAi(' + itemJson + ', this, false)\'>➕ Thêm câu</button>') +
+      '<button class="btn ai-btn-sm ghost" onclick=\'addSentenceFromAi(' + itemJson + ', this, true)\' title="Lưu và đưa lên bảng ghép ngay">🎮 Ghép ngay ➔</button>' +
+     '</div>' +
+    '</div>' +
+   '</div>';
+  });
+
+  blockHtml += '</div>';
+  parsed = parsed.replace("{{SENT_BLOCK_" + idx + "}}", blockHtml);
+ });
+
+ return parsed;
+}
+
+function onAiSentBlockCatChange(sel, blockIdx){
+ var val = sel.value;
+ if(val === "__new__"){
+  var newCat = prompt("Nhập tên danh mục mới cho phần Ghép câu (ví dụ: Hoa quả, Thời trang, Thể thao...):");
+  if(newCat && newCat.trim()){
+   var cName = newCat.trim();
+   registerCustomCat(cName);
+   var norm = normalizeCat(cName);
+   var opt = document.createElement("option");
+   opt.value = norm;
+   opt.textContent = getCategoryMeta(norm).icon + " " + cName;
+   opt.selected = true;
+   sel.insertBefore(opt, sel.lastElementChild);
+   val = norm;
+  } else {
+   sel.value = "comm";
+   val = "comm";
+  }
+ }
+ var meta = getCategoryMeta(val);
+ var box = sel.closest(".ai-sent-box");
+ if(box){
+  box.setAttribute("data-target-cat", val);
+  box.querySelectorAll(".ai-scard").forEach(function(card){
+   var badge = card.querySelector(".tag");
+   if(badge){
+    badge.className = "tag " + meta.badgeCls;
+    badge.textContent = meta.icon + " " + meta.name;
+   }
+  });
+ }
+ toast("Đã chọn lưu vào danh mục: " + meta.name);
+}
+
+function addSentenceFromAi(item, btn, autoPlay){
+ var box = btn && btn.closest ? btn.closest(".ai-sent-box") : null;
+ var overrideCat = box ? box.getAttribute("data-target-cat") : null;
+ var finalCat = overrideCat || item.cat || "comm";
+ var normalized = normalizeCat(finalCat);
+ registerCustomCat(normalized);
+
+ var sText = item.t.join("");
+ var existing = SENT.find(function(s){ return s.t.join("") === sText; });
+ var targetItem = existing;
+
+ if(!existing){
+  targetItem = {
+   cat: normalized,
+   sub: item.sub || "Mẫu câu mới",
+   t: item.t,
+   py: item.py,
+   pyTokens: item.pyTokens || getSentencePyTokens({ t: item.t, py: item.py }),
+   vi: item.vi
+  };
+  SENT.push(targetItem);
+  var customSent = ld("zh_custom_sentences", []);
+  customSent.push(targetItem);
+  sv("zh_custom_sentences", customSent);
+
+  var meta = getCategoryMeta(normalized);
+  toast("✔ Đã thêm câu vào phần Ghép câu (" + meta.name + ")!");
+  if(btn && !autoPlay){
+   btn.outerHTML = '<span class="ai-added-tag">✔ Đã thêm</span>';
+  }
+ } else {
+  if(!autoPlay){
+   toast("Câu này đã có trong phần Ghép câu!");
+   if(btn) btn.outerHTML = '<span class="ai-added-tag">✔ Đã có</span>';
+  }
+ }
+
+ if(autoPlay && targetItem){
+  go("sent");
+  sentCat = "all";
+  newSB(targetItem);
+  speak(sText);
+  render();
+  setTimeout(function(){
+   var hero = document.querySelector(".sent-sticky-hero");
+   if(hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 50);
+ } else {
+  if(view === "sent") render();
+ }
+}
+
+function addAllSentencesFromAi(list, btn){
+ var count = 0;
+ var addedCats = {};
+ var box = btn && btn.closest ? btn.closest(".ai-sent-box") : null;
+ var overrideCat = box ? box.getAttribute("data-target-cat") : null;
+ var customSent = ld("zh_custom_sentences", []);
+
+ list.forEach(function(item){
+  var sText = item.t.join("");
+  if(!SENT.some(function(s){ return s.t.join("") === sText; })){
+   var c = normalizeCat(overrideCat || item.cat || "comm");
+   registerCustomCat(c);
+   var pyToks = item.pyTokens || getSentencePyTokens({ t: item.t, py: item.py });
+   var newItem = {
+    cat: c,
+    sub: item.sub || "Mẫu câu mới",
+    t: item.t,
+    py: item.py,
+    pyTokens: pyToks,
+    vi: item.vi
+   };
+   SENT.push(newItem);
+   customSent.push(newItem);
+   addedCats[c] = true;
+   count++;
+  }
+ });
+
+ if(count > 0){
+  sv("zh_custom_sentences", customSent);
+  var catNames = Object.keys(addedCats).map(function(c){ return getCategoryMeta(c).name; }).join(", ");
+  toast("✔ Đã thêm " + count + " câu vào phần Ghép câu (" + catNames + ")!");
+  if(list[0]) speak(list[0].t.join(""));
+  if(btn) btn.outerHTML = '<span class="ai-added-tag">✔ Đã thêm ' + count + ' câu</span>';
+  if(box){
+   box.querySelectorAll(".ai-scard-foot button.btn:not(.ghost)").forEach(function(b){
+    b.outerHTML = '<span class="ai-added-tag">✔ Đã thêm</span>';
+   });
+  }
+  if(view === "sent") render();
+ } else {
+  toast("Tất cả các câu này đã có trong phần Ghép câu!");
+ }
+}
+
+function onAiBlockCatChange(sel, blockIdx){
+ var val = sel.value;
+ if(val === "__new__"){
+  var newCat = prompt("Nhập tên danh mục mới bạn muốn tạo (ví dụ: Hoa quả, Ẩm thực, Du lịch...):");
+  if(newCat && newCat.trim()){
+   var cName = newCat.trim();
+   registerCustomCat(cName);
+   var norm = normalizeCat(cName);
+   var opt = document.createElement("option");
+   opt.value = norm;
+   opt.textContent = getCategoryMeta(norm).icon + " " + cName;
+   opt.selected = true;
+   sel.insertBefore(opt, sel.lastElementChild);
+   val = norm;
+  } else {
+   sel.value = "live";
+   val = "live";
+  }
+ }
+ var meta = getCategoryMeta(val);
+ var box = sel.closest(".ai-vocab-box");
+ if(box){
+  box.setAttribute("data-target-cat", val);
+  box.querySelectorAll(".ai-vcard").forEach(function(card){
+   var badge = card.querySelector(".tag");
+   if(badge){
+    badge.className = "tag " + meta.badgeCls;
+    badge.textContent = meta.icon + " " + meta.name;
+   }
+  });
+ }
+ toast("Đã chọn lưu vào danh mục: " + meta.name);
+}
+
+function addVocabFromAi(h, p, m, cat, sub, btn){
+ if(V.some(function(w){return w.h === h})){
+  toast("Từ này đã có trong ứng dụng!");
+  if(btn) btn.outerHTML = '<span class="ai-added-tag">✔ Đã có</span>';
+  return;
+ }
+ var box = btn && btn.closest ? btn.closest(".ai-vocab-box") : null;
+ var overrideCat = box ? box.getAttribute("data-target-cat") : null;
+ var finalCat = overrideCat || cat || "live";
+ var normalized = normalizeCat(finalCat);
+ registerCustomCat(normalized);
+ var item = { h: h, p: p, m: m, cat: normalized, sub: sub || "Chung" };
+ V.push(item);
+ sv("zh_vocab", V);
+ speak(h);
+ var meta = getCategoryMeta(normalized);
+ toast("✔ Đã thêm " + h + " vào danh mục " + meta.name + "!");
+ if(btn) btn.outerHTML = '<span class="ai-added-tag">✔ Đã thêm</span>';
+ render();
+}
+
+function addAllVocabFromAi(list, btn){
+ var count = 0;
+ var addedCats = {};
+ var box = btn && btn.closest ? btn.closest(".ai-vocab-box") : null;
+ var overrideCat = box ? box.getAttribute("data-target-cat") : null;
+ list.forEach(function(item){
+  if(!V.some(function(w){return w.h === item.h})){
+   var c = normalizeCat(overrideCat || item.cat || "live");
+   registerCustomCat(c);
+   V.push({ h: item.h, p: item.p, m: item.m, cat: c, sub: item.sub || "Chung" });
+   addedCats[c] = true;
+   count++;
+  }
+ });
+ if(count > 0){
+  sv("zh_vocab", V);
+  var catNames = Object.keys(addedCats).map(function(c){ return getCategoryMeta(c).name; }).join(", ");
+  toast("✔ Đã thêm " + count + " từ vào danh mục " + catNames + "!");
+  if(list[0]) speak(list[0].h);
+  if(btn) btn.outerHTML = '<span class="ai-added-tag">✔ Đã thêm ' + count + ' từ</span>';
+  var p = btn && btn.closest ? btn.closest(".ai-vocab-box") : null;
+  if(p){
+   p.querySelectorAll(".ai-vcard-actions button.btn:not(.ghost)").forEach(function(b){
+    b.outerHTML = '<span class="ai-added-tag">✔ Đã thêm</span>';
+   });
+  }
+  render();
+ } else {
+  toast("Tất cả các từ này đã có trong ứng dụng!");
+ }
+}
+
+async function sendAiMsg(){
+ if(!isAiUnlocked()){
+  applyAiLockState(false);
+  toast("🔒 Vui lòng nhập mật khẩu để mở khóa Trợ lý AI!");
+  return;
+ }
+ if(aiLoading) return;
+ var input = $("#aiInput");
+ var prompt = input.value.trim();
+ if(!prompt) return;
+
+ var currentKey = getApiKey(aiProvider);
+ if(!currentKey){
+  $("#aiSettings").style.display = "block";
+  onAiProviderChange();
+  toast("Vui lòng nhập API Key để trò chuyện với AI!");
+  return;
+ }
+
+ input.value = "";
+ input.style.height = "auto";
+
+ var msgBox = $("#aiMessages");
+ msgBox.innerHTML += '<div class="ai-msg user"><div class="ai-bubble">' + esc(prompt) + '</div></div>';
+ 
+ var loadId = "aiLoad_" + Date.now();
+ msgBox.innerHTML += '<div class="ai-msg bot" id="' + loadId + '"><div class="ai-bubble" style="color:var(--mute)">🤖 <i>Đang kết nối...</i> <span class="ai-cursor">▌</span></div></div>';
+ msgBox.scrollTop = msgBox.scrollHeight;
+
+ aiLoading = true;
+ $("#aiSendBtn").disabled = true;
+
+ var loadElem = document.getElementById(loadId);
+ var reply = "";
+ var onChunk = function(chunk, accumulated){
+  reply = accumulated;
+  if(loadElem){
+   loadElem.innerHTML = '<div class="ai-bubble">' + esc(accumulated).replace(/\n/g, "<br>") + ' <span class="ai-cursor">▌</span></div>';
+   msgBox.scrollTop = msgBox.scrollHeight;
+  }
+ };
+
+ try {
+  if(aiProvider === "gemini"){
+   reply = await callGeminiApi(prompt, currentKey, onChunk);
+  } else {
+   reply = await callOpenAiApi(prompt, currentKey, onChunk);
+  }
+
+  aiHistory.push({ role: "user", text: prompt });
+  aiHistory.push({ role: "model", text: reply });
+  if(aiHistory.length > 8) aiHistory = aiHistory.slice(-8);
+
+  if(loadElem){
+   loadElem.innerHTML = '<div class="ai-bubble">' + formatAiText(reply) + '</div>';
+   msgBox.scrollTop = msgBox.scrollHeight;
+  }
+ } catch(err) {
+  var errMsg = err && err.message ? err.message : "Có lỗi xảy ra khi kết nối tới AI";
+  var tip = "Vui lòng kiểm tra lại API Key trong phần ⚙️ Cài đặt.";
+  if(/high demand|overloaded|spikes in demand|temporar/i.test(errMsg)){
+   tip = "Máy chủ Gemini đang quá tải tạm thời. Vui lòng bấm gửi lại sau 5-10 giây hoặc chọn mô hình khác trong ⚙️ Cài đặt.";
+  } else if(/quota|resource.*exhausted|429/i.test(errMsg)){
+   tip = "Đã đạt giới hạn gọi miễn phí trong phút này. Vui lòng chờ 1 phút rồi thử lại.";
+  } else if(/api key|key not valid|unregistered|API_KEY_INVALID/i.test(errMsg)){
+   tip = "API Key không hợp lệ hoặc chưa được kích hoạt. Vui lòng kiểm tra lại trong phần ⚙️ Cài đặt.";
+  }
+  if(loadElem){
+   loadElem.innerHTML = '<div class="ai-bubble" style="border-color:var(--bad);color:var(--bad)">⚠️ ' + esc(errMsg) + '<div style="color:var(--ink);font-size:11px;margin-top:6px;line-height:1.4">💡 ' + tip + '</div></div>';
+  }
+ } finally {
+  aiLoading = false;
+  $("#aiSendBtn").disabled = false;
+  msgBox.scrollTop = msgBox.scrollHeight;
+ }
+}
+
+async function callGeminiApi(prompt, apiKey, onChunk){
+ var pref = localStorage.getItem("ai_gemini_model") || "gemini-3.5-flash-lite";
+ if(pref.includes("1.5") || pref.includes("2.0") || pref.includes("2.5")){
+  pref = "gemini-3.5-flash-lite";
+  localStorage.setItem("ai_gemini_model", pref);
+ }
+
+ var candidateList = ["gemini-3.5-flash-lite", "gemini-3.8-flash", "gemini-4-carbon"];
+ var modelsToTry = [];
+ if(candidateList.includes(pref)){
+  modelsToTry.push(pref);
+ }
+ candidateList.forEach(function(m){
+  if(!modelsToTry.includes(m)) modelsToTry.push(m);
+ });
+
+ var contents = [];
+ aiHistory.slice(-4).forEach(function(h){
+  contents.push({
+   role: h.role === "model" ? "model" : "user",
+   parts: [{ text: h.text }]
+  });
+ });
+ contents.push({
+  role: "user",
+  parts: [{ text: prompt }]
+ });
+
+ var lastError = null;
+ for(var i = 0; i < modelsToTry.length; i++){
+  var mName = modelsToTry[i];
+  var url = "https://generativelanguage.googleapis.com/v1beta/models/" + mName + ":streamGenerateContent?alt=sse&key=" + encodeURIComponent(apiKey);
+  
+  var requestBody = {
+   contents: contents,
+   systemInstruction: {
+    parts: [{ text: AI_SYSTEM_PROMPT + "\n\n" + getAiCurrentContext() }]
+   },
+   generationConfig: {
+    maxOutputTokens: 1024,
+    temperature: 0.7
+   }
+  };
+
+  if(mName.includes("3.8") || mName.includes("3.7")){
+   requestBody.generationConfig.thinkingConfig = {
+    thinkingLevel: "LOW"
+   };
+  }
+
+  try {
+   var controller = new AbortController();
+   var timeoutId = setTimeout(function(){ controller.abort(); }, 12000);
+
+   var res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestBody),
+    signal: controller.signal
+   });
+   clearTimeout(timeoutId);
+
+   if(res.ok){
+    var reader = res.body.getReader();
+    var decoder = new TextDecoder("utf-8");
+    var buffer = "";
+    var fullText = "";
+    var receivedToken = false;
+
+    try {
+     while(true){
+      var r = await reader.read();
+      if(r.done) break;
+      buffer += decoder.decode(r.value, { stream: true });
+      var lines = buffer.split("\n");
+      buffer = lines.pop();
+
+      for(var l = 0; l < lines.length; l++){
+       var line = lines[l].trim();
+       if(line.startsWith("data:")){
+        var jsonStr = line.slice(5).trim();
+        if(jsonStr){
+         try {
+          var chunk = JSON.parse(jsonStr);
+          var candidate = chunk.candidates && chunk.candidates[0];
+          if(candidate && candidate.content && candidate.content.parts){
+           for(var p = 0; p < candidate.content.parts.length; p++){
+            var part = candidate.content.parts[p];
+            if(!part.thought && part.text){
+             fullText += part.text;
+             receivedToken = true;
+             if(onChunk) onChunk(part.text, fullText);
+            }
+           }
+          }
+         } catch(pe){}
+        }
+       }
+      }
+     }
+    } finally {
+     reader.releaseLock();
+    }
+
+    if(receivedToken && fullText.trim()){
+     return fullText;
+    }
+    lastError = new Error("Mô hình " + mName + " không trả về nội dung.");
+    continue;
+   } else {
+    var errData = await res.json().catch(function(){ return {}; });
+    var msg = (errData && errData.error && errData.error.message) || ("Lỗi Gemini API HTTP " + res.status);
+    var isRetryable = res.status === 503 || res.status === 429 || res.status === 404 || res.status === 500 ||
+      /high demand|overloaded|spikes in demand|resource.*exhausted|quota|rate limit|temporar|not found|no longer available|capacity/i.test(msg);
+    if(isRetryable && i < modelsToTry.length - 1){
+     console.warn("Mô hình " + mName + " (" + msg + "), tự động chuyển: " + modelsToTry[i + 1]);
+     lastError = new Error(msg);
+     continue;
+    }
+    throw new Error(msg);
+   }
+  } catch(e) {
+   var isAbort = e.name === "AbortError" || /aborted/i.test(e.message || "");
+   var isRetryableErr = isAbort || /high demand|overloaded|spikes in demand|resource.*exhausted|quota|rate limit|temporar|not found|no longer available|capacity|failed to fetch/i.test(e.message || "");
+   if(isRetryableErr && i < modelsToTry.length - 1){
+    console.warn("Lỗi gọi " + mName + " (" + (isAbort ? "Timeout 12s" : e.message) + "), tự động chuyển: " + modelsToTry[i + 1]);
+    lastError = isAbort ? new Error("Mô hình " + mName + " phản hồi quá lâu") : e;
+    continue;
+   }
+   throw (isAbort ? new Error("Máy chủ Google phản hồi quá thời gian cho phép. Vui lòng thử lại!") : e);
+  }
+ }
+ if(lastError) throw lastError;
+ throw new Error("Không thể kết nối tới Google Gemini. Vui lòng thử lại sau giây lát.");
+}
+
+async function callOpenAiApi(prompt, apiKey, onChunk){
+ var url = "https://api.openai.com/v1/chat/completions";
+ 
+ var messages = [{ role: "system", content: AI_SYSTEM_PROMPT + "\n\n" + getAiCurrentContext() }];
+ aiHistory.slice(-4).forEach(function(h){
+  messages.push({
+   role: h.role === "model" ? "assistant" : "user",
+   content: h.text
+  });
+ });
+ messages.push({ role: "user", content: prompt });
+
+ var res = await fetch(url, {
+  method: "POST",
+  headers: {
+   "Content-Type": "application/json",
+   "Authorization": "Bearer " + apiKey
+  },
+  body: JSON.stringify({
+   model: "gpt-4o-mini",
+   messages: messages,
+   stream: true,
+   max_tokens: 1024,
+   temperature: 0.7
+  })
+ });
+
+ if(!res.ok){
+  var errData = await res.json().catch(function(){ return {}; });
+  var msg = (errData && errData.error && errData.error.message) || ("Lỗi OpenAI API HTTP " + res.status);
+  throw new Error(msg);
+ }
+
+ var reader = res.body.getReader();
+ var decoder = new TextDecoder("utf-8");
+ var buffer = "";
+ var fullText = "";
+
+ while(true){
+  var r = await reader.read();
+  if(r.done) break;
+  buffer += decoder.decode(r.value, { stream: true });
+  var lines = buffer.split("\n");
+  buffer = lines.pop();
+
+  for(var i = 0; i < lines.length; i++){
+   var line = lines[i].trim();
+   if(line.startsWith("data:")){
+    var jsonStr = line.slice(5).trim();
+    if(jsonStr === "[DONE]") break;
+    if(jsonStr){
+     try {
+      var parsed = JSON.parse(jsonStr);
+      var delta = parsed.choices && parsed.choices[0] && parsed.choices[0].delta && parsed.choices[0].delta.content;
+      if(delta){
+       fullText += delta;
+       if(onChunk) onChunk(delta, fullText);
+      }
+     } catch(e){}
+    }
+   }
+  }
+ }
+ if(fullText.trim()) return fullText;
+ throw new Error("Không nhận được nội dung từ OpenAI");
+}
+
+document.addEventListener("click", function(e){
+ if(!e.target.closest(".dd-wrap")){
+  if(openDropdown){
+   openDropdown = null;
+   render();
+  }
+ }
+});
+
+if(window.speechSynthesis){
+ speechSynthesis.getVoices();
+ if(speechSynthesis.onvoiceschanged !== undefined){
+  speechSynthesis.onvoiceschanged = function(){
+   speechSynthesis.getVoices();
+  };
+ }
+}
+render();
+</script>
+</body>
+</html>
