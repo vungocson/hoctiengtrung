@@ -830,7 +830,7 @@ h2{font-size:18px;margin:16px 0 6px}.mute{color:var(--mute);font-size:14px}
  <div>
   <h1>学中文 · Học tiếng Trung</h1>
   <div style="font-size:11px;color:var(--mute);margin-top:2px;display:flex;align-items:center;gap:6px">
-   <span class="tag" style="background:var(--okbg);color:var(--ok);font-size:10px;padding:1px 6px">v2.2 Đồng bộ</span>
+   <span class="tag" style="background:var(--okbg);color:var(--ok);font-size:10px;padding:1px 6px">v2.3 Chuẩn 4 Giọng</span>
    <button onclick="forceAppUpdate()" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:11px;text-decoration:underline;padding:0" title="Xóa cache và nạp phiên bản mới nhất">🔄 Tải bản mới</button>
   </div>
  </div>
@@ -1350,56 +1350,43 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;
 function toast(t){var e=$("#toast");e.textContent=t;e.style.display="block";setTimeout(function(){e.style.display="none"},1800)}
 var VOICE_OPTIONS = [
  {
-  id: "sync_standard",
-  name: "Giọng Chuẩn Đồng Bộ",
-  icon: "🌐",
-  tag: "100% Đồng bộ ĐT & MT",
-  desc: "Phát âm Bắc Kinh chuẩn, đồng bộ tuyệt đối trên mọi điện thoại & máy tính (Khuyên dùng)",
-  type: "online",
-  rateMult: 1.0
- },
- {
   id: "female1",
-  name: "Giọng Nữ 1 (Tự nhiên)",
+  name: "Giọng Nữ 1",
   icon: "👩",
   tag: "Ngọt ngào, trong trẻo",
-  desc: "Phát âm nhẹ nhàng, trong sáng, chuẩn thanh điệu",
-  type: "system",
+  desc: "Phát âm thanh thoát, tự nhiên, chuẩn thanh điệu đàm thoại",
   gender: "female",
-  pitch: 1.06,
+  pitch: 1.0,
   rateMult: 1.0
  },
  {
   id: "female2",
-  name: "Giọng Nữ 2 (Phổ thông)",
+  name: "Giọng Nữ 2",
   icon: "👩",
-  tag: "Điềm tĩnh, rõ ràng",
-  desc: "Giọng đọc tự nhiên, phát âm chuẩn đàm thoại",
-  type: "system",
+  tag: "Tự nhiên, phổ thông",
+  desc: "Giọng đọc điềm tĩnh, phát âm chuẩn đàm thoại đời sống",
   gender: "female",
-  pitch: 0.98,
-  rateMult: 1.0
+  pitch: 0.96,
+  rateMult: 0.98
  },
  {
   id: "male1",
-  name: "Giọng Nam 1 (Trầm ấm)",
+  name: "Giọng Nam 1",
   icon: "👨",
-  tag: "Dứt khoát, nam tính",
-  desc: "Giọng nam trầm ấm, dứt khoát, âm sắc nam tính",
-  type: "system",
+  tag: "Trầm ấm, nam tính",
+  desc: "Giọng nam trầm ấm, dứt khoát, phong độ chuẩn phổ thông",
   gender: "male",
-  pitch: 0.72,
-  rateMult: 0.94
+  pitch: 0.85,
+  rateMult: 0.95
  },
  {
   id: "male2",
-  name: "Giọng Nam 2 (Trẻ trung)",
+  name: "Giọng Nam 2",
   icon: "👨",
-  tag: "Năng động, lưu loát",
-  desc: "Giọng nam lưu loát, năng động phong cách livestream",
-  type: "system",
+  tag: "Trẻ trung, năng động",
+  desc: "Giọng nam hoạt bát, năng động phong cách phòng live",
   gender: "male",
-  pitch: 0.80,
+  pitch: 0.92,
   rateMult: 1.02
  }
 ];
@@ -1432,14 +1419,12 @@ var SPEED_OPTIONS = [
  }
 ];
 
-// Tự động kích hoạt Giọng Chuẩn Đồng Bộ làm mặc định để khắc phục lệch giọng giữa điện thoại và máy tính
 var savedVoiceId = localStorage.getItem("zh_voice_id");
-if(!localStorage.getItem("zh_voice_sync_v2")){
- savedVoiceId = "sync_standard";
- localStorage.setItem("zh_voice_id", "sync_standard");
- localStorage.setItem("zh_voice_sync_v2", "1");
+if(!savedVoiceId || savedVoiceId === "sync_standard" || !VOICE_OPTIONS.some(function(x){ return x.id === savedVoiceId; })){
+ savedVoiceId = "female1";
+ localStorage.setItem("zh_voice_id", "female1");
 }
-var curVoiceId = (savedVoiceId && VOICE_OPTIONS.some(function(x){ return x.id === savedVoiceId; })) ? savedVoiceId : "sync_standard";
+var curVoiceId = savedVoiceId;
 var curSpeed = parseFloat(localStorage.getItem("zh_voice_speed")) || 0.95;
 var openDropdown = null; // "voice" | "speed" | "learnCat" | "sentCat" | null
 
@@ -1480,7 +1465,7 @@ function getVoiceDropdownHtml(){
   '<div class="dd-menu dd-menu-voice">'+
    '<div class="dd-header" style="display:flex;justify-content:space-between;align-items:center">' +
     '<span>Chọn giọng phát âm</span>' +
-    '<span style="font-weight:normal;color:var(--ok);font-size:11px">🌐 Đồng bộ ĐT & MT</span>' +
+    '<span style="font-weight:normal;color:var(--mute);font-size:11px">4 giọng Nam / Nữ</span>' +
    '</div>'+
    VOICE_OPTIONS.map(function(v){
     var isSel = v.id === curVoiceId;
@@ -1564,8 +1549,7 @@ var isAudioUnlocked = false;
 
 function forceAppUpdate(){
  try {
-  localStorage.setItem("zh_voice_id", "sync_standard");
-  localStorage.setItem("zh_voice_sync_v2", "1");
+  localStorage.setItem("zh_voice_id", "female1");
   if('caches' in window){
    caches.keys().then(function(names){
     names.forEach(function(name){ caches.delete(name); });
@@ -1573,7 +1557,7 @@ function forceAppUpdate(){
   }
  } catch(e){}
  var cleanUrl = window.location.pathname.split('?')[0];
- window.location.href = cleanUrl + '?ver=2.2_' + Date.now();
+ window.location.href = cleanUrl + '?ver=2.3_' + Date.now();
 }
 
 function unlockIosAudio(){
@@ -1663,15 +1647,36 @@ function getBestChineseVoice(targetGender){
 
  // Lọc tiếng Trung phổ thông (Mandarin), loại bỏ tiếng Quảng Đông (zh-HK / Sin-ji)
  var zhVoices = all.filter(function(v){
-  if(/zh-hk|cantonese|sin-ji|sinji/i.test(v.lang) || /zh-hk|cantonese|sin-ji|sinji/i.test(v.name)) return false;
-  return /zh|chinese|mandarin|cmn/i.test(v.lang) || /chinese|mandarin/i.test(v.name);
+  var l = (v.lang || "").toLowerCase();
+  var n = (v.name || "").toLowerCase();
+  if(/zh-hk|cantonese|sin-ji|sinji/.test(l) || /zh-hk|cantonese|sin-ji|sinji/.test(n)) return false;
+  return /zh|chinese|mandarin|cmn/.test(l) || /chinese|mandarin/.test(n);
  });
  if(!zhVoices.length) return null;
 
  var cnVoices = zhVoices.filter(function(v){
-  return /zh-cn|cmn-hans/i.test(v.lang);
+  return /zh-cn|cmn-hans/.test((v.lang || "").toLowerCase());
  });
  var pool = cnVoices.length ? cnVoices : zhVoices;
+
+ if(targetGender === "male"){
+  var malePatterns = [
+   /yunxi/i,
+   /yunjian/i,
+   /yunyang/i,
+   /kangkang/i,
+   /li-mu/i,
+   /limu/i,
+   /danny/i,
+   /male/i,
+   /man/i,
+   /boy/i
+  ];
+  for(var i = 0; i < malePatterns.length; i++){
+   var match = pool.find(function(v){ return malePatterns[i].test(v.name); });
+   if(match) return match;
+  }
+ }
 
  if(targetGender === "female"){
   var femalePatterns = [
@@ -1681,24 +1686,18 @@ function getBestChineseVoice(targetGender){
    /xiaohan/i,
    /huihui/i,
    /yaoyao/i,
-   /female|woman|girl|ting-ting/i
+   /ting-ting/i,
+   /tingting/i,
+   /tian-tian/i,
+   /tiantian/i,
+   /yu-shu/i,
+   /yushu/i,
+   /female/i,
+   /woman/i,
+   /girl/i
   ];
   for(var i = 0; i < femalePatterns.length; i++){
    var match = pool.find(function(v){ return femalePatterns[i].test(v.name); });
-   if(match) return match;
-  }
- }
-
- if(targetGender === "male"){
-  var malePatterns = [
-   /yunxi/i,
-   /yunjian/i,
-   /yunyang/i,
-   /kangkang/i,
-   /male|man|boy|danny/i
-  ];
-  for(var i = 0; i < malePatterns.length; i++){
-   var match = pool.find(function(v){ return malePatterns[i].test(v.name); });
    if(match) return match;
   }
  }
@@ -1713,15 +1712,9 @@ function speak(t, customVoiceId){
 
  stopSpeaking();
 
- // Chế độ 1: Giọng chuẩn trực tuyến đồng bộ (Mặc định & Khuyên dùng: 100% giống nhau trên ĐT và MT)
- if(voiceOpt.type === "online"){
-  playOnlineAudio(t, speed);
-  return;
- }
-
- // Chế độ 2: Giọng hệ thống thiết bị (SpeechSynthesis)
  if(window.speechSynthesis){
   try {
+   if(speechSynthesis.paused) speechSynthesis.resume();
    var u = new SpeechSynthesisUtterance(t);
    u.lang = "zh-CN";
    u.rate = speed;
@@ -1729,13 +1722,27 @@ function speak(t, customVoiceId){
    var voice = getBestChineseVoice(voiceOpt.gender);
    if(voice){
     u.voice = voice;
-    var isRealMale = /yunxi|yunjian|yunyang|kangkang|male|man/i.test(voice.name);
+    var vName = (voice.name || "").toLowerCase();
+    var isRealMale = /yunxi|yunjian|yunyang|kangkang|li-mu|limu|danny|male|man/.test(vName);
+    var isTingTing = /ting-ting|tingting|tian-tian|tiantian/.test(vName);
+
     if(voiceOpt.gender === "male"){
-     u.pitch = isRealMale ? (voiceOpt.id === "male1" ? 0.92 : 1.02) : (voiceOpt.pitch || 0.72);
+     if(isRealMale){
+      u.pitch = voiceOpt.id === "male1" ? 0.95 : 1.02;
+     } else {
+      // Giọng nam tự nhiên (hạ âm vực vừa phải, không làm biến dạng robot trên iPhone)
+      u.pitch = voiceOpt.id === "male1" ? 0.84 : 0.90;
+     }
     } else {
-     var isRealFemale = /xiaoxiao|xiaoyi|xiaochen|xiaohan|huihui|yaoyao/i.test(voice.name);
-     u.pitch = isRealFemale ? (voiceOpt.id === "female1" ? 1.06 : 0.98) : (voiceOpt.pitch || 1.0);
+     // Giọng nữ
+     if(isTingTing){
+      // Giữ âm vực chuẩn trong trẻo của Ting-Ting trên iPhone, không đẩy cao gây chói
+      u.pitch = voiceOpt.id === "female1" ? 1.0 : 0.96;
+     } else {
+      u.pitch = voiceOpt.id === "female1" ? 1.02 : 0.96;
+     }
     }
+
     speechSynthesis.speak(u);
     return;
    }
@@ -1744,7 +1751,7 @@ function speak(t, customVoiceId){
   }
  }
 
- // Fallback mượt mà về giọng chuẩn online nếu thiết bị không có giọng hệ thống
+ // Fallback về Google Translate TTS nếu thiết bị không hỗ trợ SpeechSynthesis
  playOnlineAudio(t, speed);
 }
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
