@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>学中文 · Học tiếng Trung</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#faf7f2;--card:#fff;--ink:#1f1b16;--mute:#7a7167;--line:#e8e0d4;--red:#c8372d;--redbg:#fbe9e7;--ok:#2e7d4f;--okbg:#e5f4ea;--bad:#b3261e;color-scheme:light}
@@ -823,7 +826,16 @@ h2{font-size:18px;margin:16px 0 6px}.mute{color:var(--mute);font-size:14px}
 }</style>
 </head>
 <body>
-<header><h1>学中文 · Học tiếng Trung</h1><span id="stat"></span></header>
+<header>
+ <div>
+  <h1>学中文 · Học tiếng Trung</h1>
+  <div style="font-size:11px;color:var(--mute);margin-top:2px;display:flex;align-items:center;gap:6px">
+   <span class="tag" style="background:var(--okbg);color:var(--ok);font-size:10px;padding:1px 6px">v2.2 Đồng bộ</span>
+   <button onclick="forceAppUpdate()" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:11px;text-decoration:underline;padding:0" title="Xóa cache và nạp phiên bản mới nhất">🔄 Tải bản mới</button>
+  </div>
+ </div>
+ <span id="stat"></span>
+</header>
 <nav id="nav"></nav>
 <main id="app"></main>
 <div id="toast"></div>
@@ -1548,10 +1560,39 @@ function scrollToWordList(){
 
 var audioPlayer = null;
 var cachedVoices = [];
+var isAudioUnlocked = false;
+
+function forceAppUpdate(){
+ try {
+  localStorage.setItem("zh_voice_id", "sync_standard");
+  localStorage.setItem("zh_voice_sync_v2", "1");
+  if('caches' in window){
+   caches.keys().then(function(names){
+    names.forEach(function(name){ caches.delete(name); });
+   });
+  }
+ } catch(e){}
+ var cleanUrl = window.location.pathname.split('?')[0];
+ window.location.href = cleanUrl + '?ver=2.2_' + Date.now();
+}
+
+function unlockIosAudio(){
+ if(isAudioUnlocked) return;
+ isAudioUnlocked = true;
+ if(window.speechSynthesis){
+  try {
+   if(speechSynthesis.paused) speechSynthesis.resume();
+  } catch(e){}
+ }
+}
+document.addEventListener("touchstart", unlockIosAudio, { once: true, passive: true });
+document.addEventListener("click", unlockIosAudio, { once: true });
 
 function updateVoicesList(){
  if(!window.speechSynthesis) return;
- cachedVoices = speechSynthesis.getVoices() || [];
+ try {
+  cachedVoices = speechSynthesis.getVoices() || [];
+ } catch(e){}
 }
 
 if(typeof window !== "undefined" && window.speechSynthesis){
@@ -1570,6 +1611,7 @@ function stopSpeaking(){
  }
  if(window.speechSynthesis){
   try {
+   if(speechSynthesis.paused) speechSynthesis.resume();
    if(speechSynthesis.speaking || speechSynthesis.pending){
     speechSynthesis.cancel();
    }
@@ -1581,7 +1623,10 @@ function playOnlineAudio(t, speed){
  try {
   stopSpeaking();
   var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=zh-CN&client=tw-ob&q=" + encodeURIComponent(t);
-  audioPlayer = new Audio(url);
+  audioPlayer = new Audio();
+  audioPlayer.setAttribute('playsinline', '');
+  audioPlayer.setAttribute('webkit-playsinline', '');
+  audioPlayer.src = url;
   audioPlayer.playbackRate = speed || curSpeed || 0.95;
   var p = audioPlayer.play();
   if(p !== undefined){
@@ -1598,6 +1643,7 @@ function playOnlineAudio(t, speed){
 function speakDeviceFallback(t, speed){
  if(!window.speechSynthesis) return;
  try {
+  if(speechSynthesis.paused) speechSynthesis.resume();
   if(speechSynthesis.speaking || speechSynthesis.pending){
    speechSynthesis.cancel();
   }
